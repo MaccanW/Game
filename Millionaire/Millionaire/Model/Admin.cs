@@ -12,7 +12,7 @@ namespace Millionaire.Model
         {
             this.UserID = UserID;
             this.Password = password;
-
+            //Hejsan
        
 
         }
