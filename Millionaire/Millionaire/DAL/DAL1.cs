@@ -9,6 +9,8 @@ namespace Millionaire.DAL
 {
     class DAL1
     {
+
+        //DB connection
         private SqlConnection Connect()
         {
 
@@ -20,14 +22,16 @@ namespace Millionaire.DAL
             return conn;
         }
 
-        public bool CreateUser(string userName, string password)
+        //Create player
+        public bool CreateUser(string userName, string password, string userType)
         {
-            string sql = "EXECUTE usp_createPlayer '" + @userName + "', '" + @password + "'";
+            string sql = "EXECUTE usp_createUser '" + @userName + "', '" + @password + "', '" + @userType + "'";
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
 
             cmd.Parameters.Add(new SqlParameter("userName", userName));
             cmd.Parameters.Add(new SqlParameter("password", password));
+            cmd.Parameters.Add(new SqlParameter("userType", userType));
 
             try
             {
@@ -41,6 +45,14 @@ namespace Millionaire.DAL
                 return false;
             }
         }
+
+
+
+ 
+
+
+
+
 
 
     }

@@ -32,10 +32,7 @@ namespace Millionaire
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
-
-
-            dal.CreateUser(textBox.Text, textBox1.Text);
+            dal.CreateUser(textBox.Text, textBox1.Text, "player");
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
