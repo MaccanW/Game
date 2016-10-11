@@ -20,11 +20,14 @@ namespace Millionaire.DAL
             return conn;
         }
 
-        public bool CreateUser(string userName, string passWord)
+        public bool CreateUser(string userName, string password)
         {
-            string sql = "EXECUTE usp_createPlayer '" + userName + "', '" + passWord + "'";
+            string sql = "EXECUTE usp_createPlayer '" + @userName + "', '" + @password + "'";
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
+
+            cmd.Parameters.Add(new SqlParameter("userName", userName));
+            cmd.Parameters.Add(new SqlParameter("password", password));
 
             try
             {
