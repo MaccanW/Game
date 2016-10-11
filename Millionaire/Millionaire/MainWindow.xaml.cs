@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Millionaire.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,26 @@ namespace Millionaire
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        DAL1 dal = new DAL1();
+        
         public MainWindow()
         {
            
+        }
+
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+
+
+
+            dal.CreateUser(textBox.Text, textBox1.Text);
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
