@@ -8,19 +8,19 @@ namespace Millionaire.Model
 {
     abstract class User
     {
-        private String userID;
+        private String userName;
         private String password;
 
-        public string UserID
+        public string UserName
         {
             get
             {
-                return userID;
+                return userName;
             }
 
             set
             {
-                userID = value;
+                userName = value;
             }
         }
 

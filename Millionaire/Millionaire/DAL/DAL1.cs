@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Millionaire.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -69,9 +70,9 @@ namespace Millionaire.DAL
             }
         }
         //Create or update question
-        private bool CreateOrUpdateQuestion(int id, string question, string rightAnswer, int level, string category, string creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
+        public bool CreateOrUpdateQuestion(int id, string question, string rightAnswer, int level, string category, string creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
         {
-            string sql = "execute usp_createQuestion" + @id + ", '" + @question + "', ' " + @rightAnswer + "'" + @level + ", '" + @category + "', " + @creator + "', '" + @wrongAnswer1 + "', '" + @wrongAnswer2 + "', '" + @wrongAnswer3 + "', '" + @wrongAnswer3 + "', '" + @sqlCommand + "'";
+            string sql = "execute usp_createQuestion" + @id + ", '" + @question + "', ' " + @rightAnswer + "'" + @level + ", '" + @category + "', " + @creator + "', '" + @wrongAnswer1 + "', '" + @wrongAnswer2 + "', '" + @wrongAnswer3 + "', '" + @sqlCommand + "'";
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
 
@@ -85,6 +86,32 @@ namespace Millionaire.DAL
             cmd.Parameters.Add(new SqlParameter("wrongAnswer2", wrongAnswer1));
             cmd.Parameters.Add(new SqlParameter("wrongAnswer3", wrongAnswer1));
             cmd.Parameters.Add(new SqlParameter("sqlCommand", sqlCommand));
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                Connect().Close();
+                return true;
+            }
+            catch
+            {
+                Connect().Close();
+                return false;
+            }
+
+        }
+
+
+        //Create or update scoreboard 
+        public bool CreateOrUpdateScoreboard(int entryId, Player player, int points)
+        {
+            string sql = "execute usp_createScoreboardEntry '" + @entryId + "' ," + @player.UserName + "' " + @points;
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+
+            cmd.Parameters.Add(new SqlParameter("entryId", entryId));
+            cmd.Parameters.Add(new SqlParameter("player", player.UserName));
+            cmd.Parameters.Add(new SqlParameter("points", points));
 
             try
             {

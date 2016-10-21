@@ -10,7 +10,8 @@ namespace Millionaire.Model
     {
         private String entryID;
         private Player player;
-        private List<Question> questionList;
+       // private List<Question> questionList;
+        private int points;
 
 
         public string EntryID
@@ -39,7 +40,20 @@ namespace Millionaire.Model
             }
         }
 
-        public List<Question> QuestionList
+        public int Points
+        {
+            get
+            {
+                return points;
+            }
+
+            set
+            {
+                points = value;
+            }
+        }
+
+       /* public List<Question> QuestionList
         {
             get
             {
@@ -50,10 +64,10 @@ namespace Millionaire.Model
             {
                 questionList = value;
             }
-        }
+        }*/
 
 
-        public ScoreboardEntry(string entryID, Player player, List<Question> questionList)
+      /*  public ScoreboardEntry(string entryID, Player player, List<Question> questionList)
         {
             this.EntryID = entryID;
             this.Player = player;
@@ -71,6 +85,7 @@ namespace Millionaire.Model
 
             return score;
         }
+        */
 
 
     }

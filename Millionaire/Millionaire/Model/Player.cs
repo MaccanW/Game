@@ -8,9 +8,9 @@ namespace Millionaire.Model
 {
     class Player : User
     {
-        public Player(String userID, String password)
+        public Player(String userName, String password)
         {
-            this.UserID = userID;
+            this.UserName = userName;
             this.Password = password;
         }
 

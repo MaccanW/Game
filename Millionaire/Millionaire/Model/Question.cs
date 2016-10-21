@@ -11,12 +11,15 @@ namespace Millionaire.Model
         private String questionID;
         private String questionString;
         private String rightAnswer;
+        private String wrongAnswer1;
+        private String wrongAnswer2;
+        private String wrongAnswer3;
         private List<String> wrongAnswers;
         private String category;
         private int level;
         private Admin creator;
 
-        public Question(string questionID, string questionString, string rightAnswer, List<string> wrongAnswers, string category, int level, Admin creator)
+       /* public Question(string questionID, string questionString, string rightAnswer, List<string> wrongAnswers, string category, int level, Admin creator)
         {
             this.questionID = questionID;
             this.questionString = questionString;
@@ -25,7 +28,7 @@ namespace Millionaire.Model
             this.category = category;
             this.level = level;
             this.creator = creator;
-        }
+        }*/
 
         public string QuestionID
         {
@@ -117,6 +120,47 @@ namespace Millionaire.Model
                 creator = value;
             }
         }
+
+        public string WrongAnswer1
+        {
+            get
+            {
+                return wrongAnswer1;
+            }
+
+            set
+            {
+                wrongAnswer1 = value;
+            }
+        }
+
+        public string WrongAnswer2
+        {
+            get
+            {
+                return wrongAnswer2;
+            }
+
+            set
+            {
+                wrongAnswer2 = value;
+            }
+        }
+
+        public string WrongAnswer3
+        {
+            get
+            {
+                return wrongAnswer3;
+            }
+
+            set
+            {
+                wrongAnswer3 = value;
+            }
+        }
+
+
     }
 }
 
