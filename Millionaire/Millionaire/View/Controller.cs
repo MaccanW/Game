@@ -11,15 +11,24 @@ namespace Millionaire.View
     {
         DAL1 dal = new DAL1();
 
-        private bool createUser(string userName, string password, string userType)
+        private bool CreateUser(string userName, string password, string userType, string sqlCommand)
         {
-            return dal.CreateUser(userName, password, userType);
+            return dal.CreateOrUpdateUser(userName, password, userType, sqlCommand);
         }
-        private void updateUser(string userName, string password, string userType)
+
+        private void DeleteUser(string userName)
         {
+            dal.DeleteUser(userName);
         }
-        private void deleteUser(string userName, string password, string userType)
+        private bool CreateOrQuestion(int id, string question, string rightAnswer, int questionLevel, string category, string creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
         {
+            return dal.CreateOrUpdateQuestion(id, question, rightAnswer, questionLevel, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
         }
+        private void DeleteQuestion(int id)
+        {
+            dal.DeleteQuestion(id);
+        }
+
+
     }
 }
