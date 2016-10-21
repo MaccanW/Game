@@ -47,7 +47,27 @@ namespace Millionaire.DAL
             }
         }
 
-        //Create 
+        //Delete user
+        public void DeleteUser(string userName)
+        {
+            string sql = "execute usp_deleteUser" + " '" + @userName + "' ";
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+
+            cmd.Parameters.Add(new SqlParameter("userName", userName));
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                Connect().Close();
+                
+            }
+            catch
+            {
+                Connect().Close();
+                
+            }
+        }
 
 
 
