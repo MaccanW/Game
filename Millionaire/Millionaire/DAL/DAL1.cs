@@ -22,10 +22,10 @@ namespace Millionaire.DAL
             return conn;
         }
 
-        //Create user
+        //Create and update user
         public bool CreateOrUpdateUser(string userName, string password, string userType, string sqlcommand)
         {
-            string sql = @sqlcommand + " " + @userName + "', '" + @password + "', '" + @userType + "'";
+            string sql = @sqlcommand + " '" + @userName + "', '" + @password + "', '" + @userType + "'";
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
 
@@ -46,6 +46,8 @@ namespace Millionaire.DAL
                 return false;
             }
         }
+
+        //Create 
 
 
 
