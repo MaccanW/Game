@@ -18,9 +18,11 @@ namespace Millionaire
         }
         private void updateUser(string userName, string password, string userType)
         {
+            dal.updateUser(userName, password, userType);
         }
-        private void deleteUser(string userName, string password, string userType)
+        private void deleteUser(string userName)
         {
+            dal.deleteUser(userName);
         }
     }
 }
