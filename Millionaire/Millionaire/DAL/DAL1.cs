@@ -22,7 +22,7 @@ namespace Millionaire.DAL
             return conn;
         }
 
-        //Create player
+        //Create user
         public bool CreateUser(string userName, string password, string userType)
         {
             string sql = "EXECUTE usp_createUser '" + @userName + "', '" + @password + "', '" + @userType + "'";
@@ -45,6 +45,8 @@ namespace Millionaire.DAL
                 return false;
             }
         }
+
+
 
 
 
