@@ -11,9 +11,9 @@ namespace Millionaire.View
     {
         DAL1 dal = new DAL1();
 
-        private bool createUser(string userName, string password, string userType)
+        private bool createUser(string userName, string password, string userType, string sqlcommand)
         {
-            return dal.CreateUser(userName, password, userType);
+            return dal.CreateOrUpdateUser(userName, password, userType, sqlcommand);
         }
         private void updateUser(string userName, string password, string userType)
         {
