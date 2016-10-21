@@ -23,12 +23,13 @@ namespace Millionaire.DAL
         }
 
         //Create user
-        public bool CreateUser(string userName, string password, string userType)
+        public bool CreateOrUpdateUser(string userName, string password, string userType, string sqlcommand)
         {
-            string sql = "EXECUTE usp_createUser '" + @userName + "', '" + @password + "', '" + @userType + "'";
+            string sql = @sqlcommand + " " + @userName + "', '" + @password + "', '" + @userType + "'";
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
 
+            cmd.Parameters.Add(new SqlParameter("sqlcommand", sqlcommand));
             cmd.Parameters.Add(new SqlParameter("userName", userName));
             cmd.Parameters.Add(new SqlParameter("password", password));
             cmd.Parameters.Add(new SqlParameter("userType", userType));
