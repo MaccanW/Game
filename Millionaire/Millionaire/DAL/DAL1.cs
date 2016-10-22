@@ -100,16 +100,39 @@ namespace Millionaire.DAL
 
         }
 
+        //Validate user
+        public bool ValidateUser(string userName, string password, string sqlCommand)
+        {
+            string sql = @sqlCommand + " '" + @userName + "', '" + @password + "'";
+
+           
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            cmd.Parameters.Add(new SqlParameter("sqlcommand", sqlCommand));
+            cmd.Parameters.Add(new SqlParameter("userName", userName));
+            cmd.Parameters.Add(new SqlParameter("userPassword", password));
+
+            try
+            {
+                while (reader.Read())
+                {
 
 
+                    if (reader.GetInt32(0) == 1)
+                    {
 
-
-
-
-
-
-
-
+                        Connect().Close();
+                        return true;
+                    }
+                }
+            }
+            catch(SqlException s)
+            {
+                Console.WriteLine(s);
+            } return false;
+        }
 
     }
 }
