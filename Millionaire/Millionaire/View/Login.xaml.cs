@@ -15,13 +15,33 @@ using System.Windows.Shapes;
 namespace Millionaire.View
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for login.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class login : Window
     {
-        public Login()
+        public login()
         {
             InitializeComponent();
         }
+        Controller controller = new Controller();
+      
+          
+            
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+           if(controller.ValidateUser(usernameTxt.Text, passwordTxt.Text, "EXECUTE [usp_CheckUsername]"))
+            {
+               
+                this.Close();
+
+            }
+           else
+            {
+                Console.WriteLine(controller.ValidateUser(usernameTxt.Text, passwordTxt.Text, "EXECUTE usp_CheckUsername"));
+                Console.WriteLine("Log in failed");
+            }
+
+        }
     }
-}
+    }

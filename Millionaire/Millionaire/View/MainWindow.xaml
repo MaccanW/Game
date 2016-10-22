@@ -72,9 +72,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Rectangle Fill="White" Margin="58,50,53,30" Stroke="Black" Grid.RowSpan="2"/>
-        <Button x:Name="button1" Content="Logga in" HorizontalAlignment="Left" Margin="184.029,105.92,0,0" VerticalAlignment="Top" Width="150.096" Click="button_Click" Cursor="Pen" Background="#FF2389DE" Height="46.167" Style="{DynamicResource ButtonStyle1}" BorderBrush="#FF0068FF"/>
         <Button x:Name="button" Content="Registrera användare" HorizontalAlignment="Left" Margin="182.385,13.92,0,0" VerticalAlignment="Top" Width="153.24" Click="button_Click" Cursor="Pen" Background="#FF2389DE" Height="46.167" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" BorderBrush="#FF0068FF"/>
         <Button x:Name="button2" Content="Highscores" Margin="183.144,79.051,181.91,36.437" Grid.Row="1" Background="#FF2389DE" BorderBrush="#FF0068FF"/>
+        <Button x:Name="loginBtn" Content="Logga in" HorizontalAlignment="Left" Margin="183,104,0,0" VerticalAlignment="Top" Width="154" Background="#FF257ADE" Height="46" Click="loginBtn_Click"/>
 
     </Grid>
 </Window>

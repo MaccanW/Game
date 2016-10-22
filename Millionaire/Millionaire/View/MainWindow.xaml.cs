@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Millionaire.View;
 
 namespace Millionaire
 {
@@ -21,8 +22,9 @@ namespace Millionaire
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        DAL1 dal = new DAL1();
+        Controller controller = new Controller();
+        Register registerWindow = new Register();
+        login loginWindow = new login();
         
         public MainWindow()
         {
@@ -32,12 +34,19 @@ namespace Millionaire
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            dal.CreateOrUpdateUser(textBox.Text, textBox1.Text, "player", "execute usp_createUser");
+            registerWindow.Show();
+      
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void loginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            loginWindow.Show();
+            this.Close();
         }
     }
 }

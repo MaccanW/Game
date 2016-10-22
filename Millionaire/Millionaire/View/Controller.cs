@@ -21,19 +21,24 @@ namespace Millionaire.View
         {
             dal.DeleteUser(userName);
         }
-      /*  private bool CreateOrUpdateQuestion( int id, string question, string rightAnswer, int level, string category, string creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
+        public bool ValidateUser(string userName, string password, string sqlCommand)
+        {
+            
+            return dal.ValidateUser(userName, password, sqlCommand);
+        }
+       /* public bool CreateOrUpdateQuestion( int id, string question, string rightAnswer, int level, string category, string creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
         {
            return dal.CreateOrUpdateQuestion(id, question, rightAnswer, level, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
         }
-        private bool CreateOrUpdateScoreboard(int entryId, User user, string userType)
+        public bool CreateOrUpdateScoreboard(int entryId, User user, string userType)
         {
            return dal.CreateOrUpdateScoreboard(entryId, user, userType);
         }
-        private ScoreboardEntry GetScoreBoardEntry(int entryId)
+        public ScoreboardEntry GetScoreBoardEntry(int entryId)
         {
             return dal.GetScoreboardEntry(entryId);
         }
-        private void DeleteScoreboardEntry(int entryId)
+        public void DeleteScoreboardEntry(int entryId)
         {
             dal.DeleteScoreboardEntry(entryId); 
         }*/
