@@ -45,6 +45,11 @@ namespace Millionaire.View
             return dal.GetScoreboardEntry();
         }
 
+        public List<Category> GetCategories()
+        {
+            return dal.GetCategories();
+        }
+
             /*
         public void DeleteScoreboardEntry(int entryId)
         {

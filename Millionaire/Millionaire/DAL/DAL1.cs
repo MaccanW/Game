@@ -135,9 +135,9 @@ namespace Millionaire.DAL
                 Connect().Close();
             }
             return false;
-            }
-            return false;
         }
+
+
 
 
         //Create or update scoreboard 
@@ -191,9 +191,9 @@ namespace Millionaire.DAL
                 return entryList;
             }
         }
-    }
-}
-        }
+
+
+
 
         /*public Admin getAdmin(string userName)
         {
@@ -227,9 +227,6 @@ namespace Millionaire.DAL
             SqlDataReader reader = cmd.ExecuteReader();
 
             List<Question> qList = new List<Question>();
-
-
-
             try
             {
                 while (reader.Read())
@@ -240,7 +237,7 @@ namespace Millionaire.DAL
                     q.QuestionString = reader.GetString(1);
                     q.RightAnswer = reader.GetString(2);
                     q.Level = reader.GetInt32(3);
-                    q.Category = reader.GetString(4);
+                    q.Category = new Category(reader.GetString(4));
                     q.Creator = new Admin(reader.GetString(5), "passWord");
                     q.WrongAnswer1 = reader.GetString(6);
                     q.WrongAnswer2 = reader.GetString(7);
@@ -250,12 +247,34 @@ namespace Millionaire.DAL
 
                 }
                 return qList;
-            }catch
+            }
+            catch
             {
                 return null;
             }
-
-            
         }
+
+        public List<Category> GetCategories()
+        {
+            string sql = "EXECUTE usp_getCategories";
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<Category> catList = new List<Category>();
+            try
+            {
+                while (reader.Read())
+                {
+                    Category c = new Category(reader.GetString(0));
+                    catList.Add(c);
+                }
+                return catList;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
     }
 }

@@ -26,13 +26,20 @@ namespace Millionaire.View
         public AdminQuestions()
         {
             InitializeComponent();
+            List<Category> catList = con.GetCategories();
+
+            foreach (Category c in catList)
+            {
+                CatComboBox.Items.Add(c.Categoryy);
+            }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
             List<Question> qList = con.GetAllQuestions();
             //dataGrid.Items.Add(qList);
-
+            dataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
+            //dataGrid.Items.Clear();
             this.dataGrid.ItemsSource = qList;
         }
 
@@ -42,6 +49,29 @@ namespace Millionaire.View
         }
 
         private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Question q = (Question)dataGrid.SelectedItem;
+                textBox.Text = q.QuestionString;
+                raTxt.Text = q.RightAnswer;
+                wa1Txt.Text = q.WrongAnswer1;
+                wa2Txt.Text = q.WrongAnswer2;
+                wa3Txt.Text = q.WrongAnswer3;
+                CatComboBox.Text = q.Category.Categoryy;
+                
+            }catch
+            {
+                
+            }
+        }
+
+        private void CatComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
