@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Millionaire.Model
 {
-    class ScoreboardEntry
+   public class ScoreboardEntry
     {
         private String entryID;
         private Player player;

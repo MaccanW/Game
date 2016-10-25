@@ -26,6 +26,7 @@ namespace Millionaire
         Register registerWindow = new Register();
         AdminQuestions adminquestionWindow = new AdminQuestions();
         login loginWindow = new login();
+        Highscore highscoreWindow = new Highscore();
         
         public MainWindow()
         {
@@ -48,6 +49,11 @@ namespace Millionaire
         {
             loginWindow.Show();
             this.Close();
+        }
+
+        private void highscoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            highscoreWindow.Show();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)

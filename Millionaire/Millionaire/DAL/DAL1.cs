@@ -1,10 +1,12 @@
 ﻿using Millionaire.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Millionaire.DAL
 {
@@ -106,8 +108,6 @@ namespace Millionaire.DAL
         {
             string sql = @sqlCommand + " '" + @userName + "', '" + @password + "'";
 
-
-
             SqlCommand cmd = new SqlCommand(sql, Connect());
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -132,6 +132,9 @@ namespace Millionaire.DAL
             catch (SqlException s)
             {
                 Console.WriteLine(s);
+                Connect().Close();
+            }
+            return false;
             }
             return false;
         }
@@ -160,6 +163,36 @@ namespace Millionaire.DAL
                 return false;
             }
 
+        }
+
+        public List<ScoreboardEntry> GetScoreboardEntry()
+        {
+            string sql = "EXECUTE usp_getScoreboardEntries";
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<ScoreboardEntry> entryList = new List<ScoreboardEntry>();
+            try
+            {
+                while (reader.Read())
+                {
+                    ScoreboardEntry entry = new ScoreboardEntry();
+                    entry.Player = new Player(reader.GetValue(1).ToString(), "password");
+                    entry.Points = Int32.Parse(reader.GetValue(2).ToString());
+                    entryList.Add(entry);
+
+                }
+                Connect().Close();
+                return entryList;
+            }
+            catch
+            {
+                Connect().Close();
+                return entryList;
+            }
+        }
+    }
+}
         }
 
         /*public Admin getAdmin(string userName)

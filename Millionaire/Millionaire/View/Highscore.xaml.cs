@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Millionaire.Model;
+using System.Data;
 
 namespace Millionaire.View
 {
@@ -21,7 +23,27 @@ namespace Millionaire.View
     {
         public Highscore()
         {
+            Controller controller = new Controller();
+            
+
+
             InitializeComponent();
+
+
+            this.highscoreGrid.ItemsSource = controller.GetScoreboardEntry();
+          
+
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+
         }
     }
 }
