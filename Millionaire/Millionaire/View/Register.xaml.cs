@@ -35,7 +35,7 @@ namespace Millionaire.View
              if (controller.CreateOrUpdateUser(userNameTxt.Text, passwordTxt.Text, "Player", "EXECUTE usp_CreateUser"))
             {
                 try {
-                    this.Close();
+                    this.Hide();
                 } catch(Exception s)
                 {
                     Console.WriteLine(s.ToString());

@@ -1,10 +1,12 @@
 ﻿using Millionaire.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Millionaire.DAL
 {
@@ -61,12 +63,12 @@ namespace Millionaire.DAL
             {
                 cmd.ExecuteNonQuery();
                 Connect().Close();
-                
+
             }
             catch
             {
                 Connect().Close();
-          
+
             }
         }
         //Create or update question
@@ -106,8 +108,6 @@ namespace Millionaire.DAL
         {
             string sql = @sqlCommand + " '" + @userName + "', '" + @password + "'";
 
-
-
             SqlCommand cmd = new SqlCommand(sql, Connect());
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -129,10 +129,12 @@ namespace Millionaire.DAL
                     }
                 }
             }
-            catch(SqlException s)
+            catch (SqlException s)
             {
                 Console.WriteLine(s);
-            } return false;
+                Connect().Close();
+            }
+            return false;
         }
 
 
@@ -160,4 +162,32 @@ namespace Millionaire.DAL
             }
 
         }
+
+        public List<ScoreboardEntry> GetScoreboardEntry()
+        {
+            string sql = "EXECUTE usp_getScoreboardEntries";
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<ScoreboardEntry> entryList = new List<ScoreboardEntry>();
+            try
+            {
+                while (reader.Read())
+                {
+                    ScoreboardEntry entry = new ScoreboardEntry();
+                    entry.Player = new Player(reader.GetValue(1).ToString(), "password");
+                    entry.Points = Int32.Parse(reader.GetValue(2).ToString());
+                    entryList.Add(entry);
+
+                }
+                Connect().Close();
+                return entryList;
+            }
+            catch
+            {
+                Connect().Close();
+                return entryList;
+            }
+        }
+    }
 }

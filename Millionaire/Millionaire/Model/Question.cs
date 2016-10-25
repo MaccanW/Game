@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Millionaire.Model
 {
-    class Question
+   public class Question
     {
         private String questionID;
         private String questionString;

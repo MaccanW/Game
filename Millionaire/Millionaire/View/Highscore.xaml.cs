@@ -28,24 +28,21 @@ namespace Millionaire.View
 
 
             InitializeComponent();
-            var playerCol = new DataGridTextColumn();
-            playerCol.Header = "Player";
-            var pointsCol = new DataGridTextColumn();
-            pointsCol.Header = "Points";
 
-            highscoreGrid.Columns.Add(playerCol);
-            highscoreGrid.Columns.Add(pointsCol);
 
-            foreach ( ScoreboardEntry se in controller.GetScoreboardEntry())
-            {
-                DataGridRow row = (DataGridRow)highscoreGrid[0].Clone();
-                highscoreGrid.Rows[1].Cells[1].Value = value;
-            };
-           
+            this.highscoreGrid.ItemsSource = controller.GetScoreboardEntry();
+          
+
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
 
         }
     }

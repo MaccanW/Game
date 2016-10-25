@@ -25,6 +25,7 @@ namespace Millionaire
         Controller controller = new Controller();
         Register registerWindow = new Register();
         login loginWindow = new login();
+        Highscore highscoreWindow = new Highscore();
         
         public MainWindow()
         {
@@ -47,6 +48,11 @@ namespace Millionaire
         {
             loginWindow.Show();
             this.Close();
+        }
+
+        private void highscoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            highscoreWindow.Show();
         }
     }
 }

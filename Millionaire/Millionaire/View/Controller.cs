@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Millionaire.View;
+using System.Collections;
+
 
 namespace Millionaire.View
 {
@@ -33,10 +35,12 @@ namespace Millionaire.View
         {
            return dal.CreateOrUpdateScoreboard(entryId, user, points);
         }
-      /*  public ScoreboardEntry GetScoreBoardEntry(int entryId)
+        public List<ScoreboardEntry> GetScoreboardEntry()
         {
-            return dal.GetScoreboardEntry(entryId);
+            return dal.GetScoreboardEntry();
         }
+
+            /*
         public void DeleteScoreboardEntry(int entryId)
         {
             dal.DeleteScoreboardEntry(entryId); 

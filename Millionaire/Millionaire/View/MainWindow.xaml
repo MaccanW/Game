@@ -73,7 +73,7 @@
         </Grid.RowDefinitions>
         <Rectangle Fill="White" Margin="58,40,53,40" Stroke="Black" Grid.RowSpan="2" StrokeThickness="0" RadiusX="3" RadiusY="3"/>
         <Button x:Name="button" Content="Registrera användare" HorizontalAlignment="Left" Margin="182,139,0,0" VerticalAlignment="Top" Width="155" Click="button_Click" Cursor="Pen" Background="#FF2389DE" Height="46" BorderBrush="#FF0068FF" Grid.RowSpan="2"/>
-        <Button x:Name="button2" Content="Highscores" Margin="182,46,180,68" Background="#FF2389DE" BorderBrush="#FF0068FF" Height="Auto" RenderTransformOrigin="-0.443,1.66" Grid.Row="1"/>
+        <Button x:Name="highscoreBtn" Content="Highscores" Margin="182,46,180,68" Background="#FF2389DE" BorderBrush="#FF0068FF" Height="Auto" RenderTransformOrigin="-0.443,1.66" Grid.Row="1" Click="highscoreBtn_Click"/>
         <Button x:Name="loginBtn" Content="Logga in" HorizontalAlignment="Left" Margin="183,70,0,0" VerticalAlignment="Top" Width="154" Background="#FF257ADE" Height="46" Click="loginBtn_Click" BorderThickness="0"/>
 
     </Grid>
