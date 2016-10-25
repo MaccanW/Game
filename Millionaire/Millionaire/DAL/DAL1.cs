@@ -135,5 +135,29 @@ namespace Millionaire.DAL
             } return false;
         }
 
-    }
+
+        //Create or update scoreboard 
+        public bool CreateOrUpdateScoreboard(int entryId, Player player, int points)
+        {
+            string sql = "execute usp_createScoreboardEntry '" + @entryId + "' ," + @player.UserName + "' " + @points;
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+
+            cmd.Parameters.Add(new SqlParameter("entryId", entryId));
+            cmd.Parameters.Add(new SqlParameter("player", player.UserName));
+            cmd.Parameters.Add(new SqlParameter("points", points));
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                Connect().Close();
+                return true;
+            }
+            catch
+            {
+                Connect().Close();
+                return false;
+            }
+
+        }
 }
