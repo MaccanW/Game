@@ -137,14 +137,14 @@ namespace Millionaire.DAL
 
 
         //Create or update scoreboard 
-        public bool CreateOrUpdateScoreboard(int entryId, Player player, int points)
+        public bool CreateOrUpdateScoreboard(int entryId, User user, int points)
         {
-            string sql = "execute usp_createScoreboardEntry '" + @entryId + "' ," + @player.UserName + "' " + @points;
+            string sql = "execute usp_createScoreboardEntry '" + @entryId + "' ," + @user.UserName + "' " + @points;
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
 
             cmd.Parameters.Add(new SqlParameter("entryId", entryId));
-            cmd.Parameters.Add(new SqlParameter("player", player.UserName));
+            cmd.Parameters.Add(new SqlParameter("player", user.UserName));
             cmd.Parameters.Add(new SqlParameter("points", points));
 
             try
