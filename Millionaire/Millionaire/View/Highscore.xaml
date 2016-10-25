@@ -1,0 +1,13 @@
+﻿<Window x:Class="Millionaire.View.Highscore"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Millionaire.View"
+        mc:Ignorable="d"
+        Title="Highscore" Height="300" Width="300">
+    <Grid>
+        <TextBox x:Name="textBox" Margin="68.754,44.856,-96.515,120.85" TextWrapping="Wrap" Text="TextBox"/>
+
+    </Grid>
+</Window>
