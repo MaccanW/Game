@@ -25,7 +25,11 @@ namespace Millionaire.View
         {
            return dal.CreateOrUpdateQuestion(id, question, rightAnswer, level, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
         }
-        private bool CreateOrUpdateScoreboard(int entryId, User user, string userType)
+        public bool ValidateUser(string username, string password, string sqlCommand)
+        {
+            return dal.ValidateUser(username, password, sqlCommand);
+        }
+      /*  private bool CreateOrUpdateScoreboard(int entryId, User user, string userType)
         {
            return dal.CreateOrUpdateScoreboard(entryId, player, points);
         }

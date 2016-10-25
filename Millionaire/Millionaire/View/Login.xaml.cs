@@ -24,7 +24,7 @@ namespace Millionaire.View
             InitializeComponent();
         }
         Controller controller = new Controller();
-      
+        Game gameWindow = new Game();
           
             
 
@@ -32,12 +32,14 @@ namespace Millionaire.View
         {
            if(controller.ValidateUser(usernameTxt.Text, passwordTxt.Text, "EXECUTE [usp_CheckUsername]"))
             {
-               
+                
+                gameWindow.Show();
                 this.Close();
 
             }
            else
             {
+                
                 Console.WriteLine(controller.ValidateUser(usernameTxt.Text, passwordTxt.Text, "EXECUTE usp_CheckUsername"));
                 Console.WriteLine("Log in failed");
             }
