@@ -63,7 +63,10 @@ namespace Millionaire.View
                 wa1Txt.Text = q.WrongAnswer1;
                 wa2Txt.Text = q.WrongAnswer2;
                 wa3Txt.Text = q.WrongAnswer3;
+                qIdTxt.Text = q.QuestionID.ToString();
+                lvlTxt.Text = q.Level.ToString();
                 CatComboBox.Text = q.Category.Categoryy;
+                
                 
             }catch
             {
@@ -73,6 +76,24 @@ namespace Millionaire.View
 
         private void CatComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+        }
+
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                
+                Question q = (Question)dataGrid.SelectedItem;
+                con.CreateOrUpdateQuestion(q.QuestionID, textBox.Text, raTxt.Text, Convert.ToInt32(lvlTxt.Text), q.Category, q.Creator, wa1Txt.Text, wa2Txt.Text, wa3Txt.Text, "EXECUTE usp_updateQuestion");
+                
+            }
+            catch
+            {
+                
+            }
+           
+           // con.CreateOrUpdateQuestion(q.QuestionID, )
 
         }
     }

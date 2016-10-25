@@ -72,22 +72,24 @@ namespace Millionaire.DAL
             }
         }
         //Create or update question
-        public bool CreateOrUpdateQuestion(int id, string question, string rightAnswer, int level, string category, string creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
+        public bool CreateOrUpdateQuestion(int id, string question, string rightAnswer, int level, Category category, Admin creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
         {
-            string sql = "execute usp_createQuestion" + @id + ", '" + @question + "', ' " + @rightAnswer + "'" + @level + ", '" + @category + "', " + @creator + "', '" + @wrongAnswer1 + "', '" + @wrongAnswer2 + "', '" + @wrongAnswer3 + "', '" + @sqlCommand + "'";
+            string sql = @sqlCommand + " "+ @id + ", '" + @question + "', '" + @rightAnswer + "', " + @level + ", '" + @category.Categoryy + "', '" + @creator.UserName + "', '" + @wrongAnswer1 + "', '" + @wrongAnswer2 + "', '" + @wrongAnswer3 + "'";
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
 
-            cmd.Parameters.Add(new SqlParameter("id", id));
+           /* cmd.Parameters.Add(new SqlParameter("id", id));
             cmd.Parameters.Add(new SqlParameter("question", question));
             cmd.Parameters.Add(new SqlParameter("rightAnswer", rightAnswer));
             cmd.Parameters.Add(new SqlParameter("level", level));
-            cmd.Parameters.Add(new SqlParameter("category", category));
-            cmd.Parameters.Add(new SqlParameter("creator", creator));
+            cmd.Parameters.Add(new SqlParameter("category", category.Categoryy));
+            Category c = new Category(category.Categoryy);
+            String hej = c.Categoryy;
+            cmd.Parameters.Add(new SqlParameter(creator.ToString(), hej));
             cmd.Parameters.Add(new SqlParameter("wrongAnswer1", wrongAnswer1));
             cmd.Parameters.Add(new SqlParameter("wrongAnswer2", wrongAnswer1));
             cmd.Parameters.Add(new SqlParameter("wrongAnswer3", wrongAnswer1));
-            cmd.Parameters.Add(new SqlParameter("sqlCommand", sqlCommand));
+            cmd.Parameters.Add(new SqlParameter("sqlCommand", sqlCommand));*/
 
             try
             {
