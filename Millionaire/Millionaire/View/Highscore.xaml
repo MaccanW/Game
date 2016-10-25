@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Millionaire.View"
         mc:Ignorable="d"
-        Title="Highscore" Height="300" Width="300">
-    <Grid>
-        <TextBox x:Name="textBox" Margin="68.754,44.856,-96.515,120.85" TextWrapping="Wrap" Text="TextBox"/>
-
+        Title="Highscore" Height="300" Width="589.612">
+    <Grid Background="#FF2389DE">
+        <DataGrid x:Name="highscoreGrid" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Height="199" Width="345" SelectionChanged="dataGrid_SelectionChanged"/>
+        <Label x:Name="highscoreLbl" Content="Highscore" HorizontalAlignment="Left" Margin="227,10,0,0" VerticalAlignment="Top" FontSize="26.667" Foreground="#DDFFFFFF"/>
     </Grid>
 </Window>
