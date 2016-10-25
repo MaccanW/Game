@@ -24,6 +24,7 @@ namespace Millionaire
     {
         Controller controller = new Controller();
         Register registerWindow = new Register();
+        AdminQuestions adminquestionWindow = new AdminQuestions();
         login loginWindow = new login();
         
         public MainWindow()
@@ -47,6 +48,11 @@ namespace Millionaire
         {
             loginWindow.Show();
             this.Close();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            adminquestionWindow.Show();
         }
     }
 }

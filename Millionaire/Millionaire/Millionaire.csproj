@@ -66,6 +66,9 @@
     <Compile Include="View\Administration.xaml.cs">
       <DependentUpon>Administration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AdminQuestions.xaml.cs">
+      <DependentUpon>AdminQuestions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,10 @@
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Administration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminQuestions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

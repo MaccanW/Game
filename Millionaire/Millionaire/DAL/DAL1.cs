@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Millionaire.DAL
 {
-    class DAL1
+    public class DAL1
     {
 
         //DB connection
@@ -61,12 +61,12 @@ namespace Millionaire.DAL
             {
                 cmd.ExecuteNonQuery();
                 Connect().Close();
-                
+
             }
             catch
             {
                 Connect().Close();
-          
+
             }
         }
         //Create or update question
@@ -129,15 +129,16 @@ namespace Millionaire.DAL
                     }
                 }
             }
-            catch(SqlException s)
+            catch (SqlException s)
             {
                 Console.WriteLine(s);
-            } return false;
+            }
+            return false;
         }
 
 
         //Create or update scoreboard 
-        public bool CreateOrUpdateScoreboard(int entryId, User user, int points)
+        private bool CreateOrUpdateScoreboard(int entryId, User user, int points)
         {
             string sql = "execute usp_createScoreboardEntry '" + @entryId + "' ," + @user.UserName + "' " + @points;
 
@@ -160,4 +161,68 @@ namespace Millionaire.DAL
             }
 
         }
+
+        /*public Admin getAdmin(string userName)
+        {
+            string sql = "EXECUTE usp_getUser " + @userName;
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+            cmd.Parameters.Add(new SqlParameter("userName", userName));
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                Connect().Close();
+                return u;
+            }
+            catch
+            {
+                Connect().Close();
+                return null;
+            }
+
+
+
+        }*/
+
+        public List<Question> GetAllQuestions()
+        {
+            string sql = "EXECUTE usp_getAllQuestions";
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            List<Question> qList = new List<Question>();
+
+
+
+            try
+            {
+                while (reader.Read())
+                {
+                    Question q = new Question();
+
+                    q.QuestionID = reader.GetInt32(0);
+                    q.QuestionString = reader.GetString(1);
+                    q.RightAnswer = reader.GetString(2);
+                    q.Level = reader.GetInt32(3);
+                    q.Category = reader.GetString(4);
+                    q.Creator = new Admin(reader.GetString(5), "passWord");
+                    q.WrongAnswer1 = reader.GetString(6);
+                    q.WrongAnswer2 = reader.GetString(7);
+                    q.WrongAnswer3 = reader.GetString(8);
+
+                    qList.Add(q);
+
+                }
+                return qList;
+            }catch
+            {
+                return null;
+            }
+
+            
+        }
+    }
 }
