@@ -71,10 +71,22 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Rectangle Fill="White" Margin="58,40,53,40" Stroke="Black" Grid.RowSpan="2" StrokeThickness="0" RadiusX="3" RadiusY="3"/>
-        <Button x:Name="button" Content="Registrera användare" HorizontalAlignment="Left" Margin="182,139,0,0" VerticalAlignment="Top" Width="155" Click="button_Click" Cursor="Pen" Background="#FF2389DE" Height="46" BorderBrush="#FF0068FF" Grid.RowSpan="2"/>
-        <Button x:Name="button2" Content="Highscores" Margin="182,46,180,68" Background="#FF2389DE" BorderBrush="#FF0068FF" Height="Auto" RenderTransformOrigin="-0.443,1.66" Grid.Row="1"/>
-        <Button x:Name="loginBtn" Content="Logga in" HorizontalAlignment="Left" Margin="183,70,0,0" VerticalAlignment="Top" Width="154" Background="#FF257ADE" Height="46" Click="loginBtn_Click" BorderThickness="0"/>
+        <Rectangle Margin="81,39,65,41" Stroke="Black" Grid.RowSpan="2" StrokeThickness="0" RadiusX="3" RadiusY="3" Fill="White"/>
+        <Button x:Name="button" Content="Registrera användare" HorizontalAlignment="Left" Margin="182,139,0,0" VerticalAlignment="Top" Width="155" Click="button_Click" Cursor="Pen" Background="#FF257ADE" Height="46" BorderBrush="#FF3D4997" Grid.RowSpan="2" Foreground="White">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="button2" Content="Highscores" Margin="182,46,180,68" Background="#FF257ADE" BorderBrush="#FF3D4997" Height="Auto" RenderTransformOrigin="-0.443,1.66" Grid.Row="1" Foreground="White" BorderThickness="1">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="loginBtn" Content="Logga in" HorizontalAlignment="Left" Margin="183,70,0,0" VerticalAlignment="Top" Width="154" Background="#FF257ADE" Height="46" Click="loginBtn_Click" BorderThickness="1" BorderBrush="#FF3D4997" Foreground="White">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
 
     </Grid>
 </Window>
