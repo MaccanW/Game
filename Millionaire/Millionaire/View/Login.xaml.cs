@@ -47,7 +47,7 @@ namespace Millionaire.View
 
                 }
                 else if (u.GetType().ToString().Equals("Millionaire.Model.Player"))
-                {
+                {   
                     Game gameWindow = new Game((Player)u);
                     gameWindow.Show();
                     this.Close();

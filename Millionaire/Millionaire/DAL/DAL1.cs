@@ -163,12 +163,10 @@ namespace Millionaire.DAL
 
                     if (resultUserType.Equals("Admin"))
                     {
-
                         Connect().Close();
                         return new Admin(resultUserName, null);
 
-                    }
-                    else if (resultUserType.Equals("Player"))
+                    } else if (resultUserType.Equals("Player"))
                     {
                         return new Player(resultUserName, null);
                     }
@@ -184,13 +182,11 @@ namespace Millionaire.DAL
         }
 
         //Create or update scoreboard 
-        private bool CreateOrUpdateScoreboard(int entryId, User user, int points)
+        public bool CreateOrUpdateScoreboard( User user, int points)
         {
-            string sql = "execute usp_createScoreboardEntry '" + @entryId + "' ," + @user.UserName + "' " + @points;
+            string sql = "execute usp_createScoreboardEntry '"  + @user.UserName + "', " + @points;
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
-
-            cmd.Parameters.Add(new SqlParameter("entryId", entryId));
             cmd.Parameters.Add(new SqlParameter("player", user.UserName));
             cmd.Parameters.Add(new SqlParameter("points", points));
 
@@ -210,7 +206,7 @@ namespace Millionaire.DAL
 
         public List<ScoreboardEntry> GetScoreboardEntry()
         {
-            string sql = "EXECUTE usp_getScoreboardEntries";
+            string sql = "EXECUTE usp_GetTop10ScoreboardEntries";
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
             SqlDataReader reader = cmd.ExecuteReader();
@@ -234,6 +230,8 @@ namespace Millionaire.DAL
                 return entryList;
             }
         }
+    
+
 
         /*public Admin getAdmin(string userName)
         {
@@ -255,6 +253,7 @@ namespace Millionaire.DAL
             }
 */
 
+    */
         public List<Question> GetAllQuestions()
         {
             string sql = "EXECUTE usp_getAllQuestions";
@@ -355,7 +354,7 @@ namespace Millionaire.DAL
 
         public Question GetQuestion(string category, int questionLevel)
         {
-            string sql = "EXECUTE usp_getRandomQuestion '" + @category + "', " + @questionLevel;
+            string sql = "EXECUTE usp_GetRandomQuestion " +"'" + @category +"', " + @questionLevel;
             SqlCommand cmd = new SqlCommand(sql, Connect());
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -414,15 +413,21 @@ namespace Millionaire.DAL
 
                     qList.Add(q);
 
-                }
-                return qList;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-
     }
+        public Player GetPlayer(string userName)
+        {
+            string sql = "EXECUTE usp_GetUser " + "'" + @userName + "'";
+           
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+            cmd.Parameters.Add(new SqlParameter("userName", userName));
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Player player = new Player(reader.GetString(0), reader.GetString(1));
+                return player;
+            }
+            return null;
+        }
+}
 }
