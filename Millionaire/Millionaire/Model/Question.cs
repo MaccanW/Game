@@ -15,7 +15,7 @@ namespace Millionaire.Model
         private String wrongAnswer2;
         private String wrongAnswer3;
         
-        private String category;
+        private Category category;
         private int level;
         private Admin creator;
 
@@ -69,7 +69,7 @@ namespace Millionaire.Model
             }
         }
 
-        public string Category
+        public Category Category
         {
             get
             {
