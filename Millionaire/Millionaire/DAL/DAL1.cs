@@ -207,7 +207,7 @@ namespace Millionaire.DAL
 
         public List<ScoreboardEntry> GetScoreboardEntry()
         {
-            string sql = "EXECUTE usp_getScoreboardEntries";
+            string sql = "EXECUTE usp_GetTop10ScoreboardEntries";
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
             SqlDataReader reader = cmd.ExecuteReader();
