@@ -24,6 +24,8 @@ namespace Millionaire.View
         int score = 0;
         int levelCounter = 1;
         Player pl;
+        Highscore highscoreWindow = new Highscore();
+
         public Game(Player player)
         {
             InitializeComponent();
@@ -121,10 +123,12 @@ namespace Millionaire.View
                 counter++;
                 CalculateScore();
                 pointsLbl.Content = "Your score: " + score;
+                controller.CreateScoreboardEntry(pl, score);
                 if (counter > 5 || counter > 10)
                     levelCounter++;
               HideVisible("answers");
                 AddCategories();
+                
             }
             else
             {
@@ -180,6 +184,17 @@ namespace Millionaire.View
         {
             Game newGame = new Game(pl);
             newGame.ShowDialog();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            highscoreWindow.Show();
+
         }
     }
 }

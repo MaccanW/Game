@@ -31,10 +31,11 @@ namespace Millionaire.View
 
 
             this.highscoreGrid.ItemsSource = controller.GetScoreboardEntry();
+            this.highscoreGrid.Items.Refresh();
+
           
 
         }
-
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

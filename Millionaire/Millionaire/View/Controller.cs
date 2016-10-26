@@ -14,8 +14,6 @@ namespace Millionaire.View
    public class Controller
     {
         DAL1 dal = new DAL1();
-        Admin activeAdmin;
-        Player activePlayer;
 
         public Admin ActiveAdmin { get; set; }
         public Player GetPlayer(string username) {
@@ -60,6 +58,11 @@ namespace Millionaire.View
             return dal.GetAllLegacyQuestions();
         }
 
+        public void CreateScoreboardEntry(Player player, int points)
+        {
+            dal.CreateScoreboardEntry(player, points);
+        }
+
         public Question GetQuestion(string category, int level)
         {
             return dal.GetQuestion(category, level);
@@ -73,12 +76,6 @@ namespace Millionaire.View
         {
             return dal.GetCategories();
         }
-
-            /*
-        public void DeleteScoreboardEntry(int entryId)
-        {
-            dal.DeleteScoreboardEntry(entryId); 
-        }*/
 
         public void DeleteQuestion(int questionID)
         {

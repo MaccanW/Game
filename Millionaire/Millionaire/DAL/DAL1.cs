@@ -78,7 +78,7 @@ namespace Millionaire.DAL
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
 
-            /* cmd.Parameters.Add(new SqlParameter("id", id));
+             cmd.Parameters.Add(new SqlParameter("id", id));
              cmd.Parameters.Add(new SqlParameter("question", question));
              cmd.Parameters.Add(new SqlParameter("rightAnswer", rightAnswer));
              cmd.Parameters.Add(new SqlParameter("level", level));
@@ -89,7 +89,7 @@ namespace Millionaire.DAL
              cmd.Parameters.Add(new SqlParameter("wrongAnswer1", wrongAnswer1));
              cmd.Parameters.Add(new SqlParameter("wrongAnswer2", wrongAnswer1));
              cmd.Parameters.Add(new SqlParameter("wrongAnswer3", wrongAnswer1));
-             cmd.Parameters.Add(new SqlParameter("sqlCommand", sqlCommand));*/
+             cmd.Parameters.Add(new SqlParameter("sqlCommand", sqlCommand));
 
             try
             {
@@ -112,7 +112,6 @@ namespace Millionaire.DAL
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
 
-            /* cmd.Parameters.Add(new SqlParameter("id", id));
              cmd.Parameters.Add(new SqlParameter("question", question));
              cmd.Parameters.Add(new SqlParameter("rightAnswer", rightAnswer));
              cmd.Parameters.Add(new SqlParameter("level", level));
@@ -123,7 +122,7 @@ namespace Millionaire.DAL
              cmd.Parameters.Add(new SqlParameter("wrongAnswer1", wrongAnswer1));
              cmd.Parameters.Add(new SqlParameter("wrongAnswer2", wrongAnswer1));
              cmd.Parameters.Add(new SqlParameter("wrongAnswer3", wrongAnswer1));
-             cmd.Parameters.Add(new SqlParameter("sqlCommand", sqlCommand));*/
+             cmd.Parameters.Add(new SqlParameter("sqlCommand", sqlCommand));
 
             try
             {
@@ -231,27 +230,25 @@ namespace Millionaire.DAL
             }
         }
     
-
-
-        /*public Admin getAdmin(string userName)
+        public void CreateScoreboardEntry(Player player, int points)
         {
-            string sql = "EXECUTE usp_getUser " + @userName;
+            string sql = "EXECUTE usp_CreateScoreboardEntry '" + @player.UserName + "', " + @points;
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
-            cmd.Parameters.Add(new SqlParameter("userName", userName));
+            SqlDataReader reader = cmd.ExecuteReader();
 
             try
             {
                 cmd.ExecuteNonQuery();
                 Connect().Close();
-                return u;
+
             }
             catch
             {
                 Connect().Close();
-                return null;
+
             }
-*/
+        }
 
  
         public List<Question> GetAllQuestions()
