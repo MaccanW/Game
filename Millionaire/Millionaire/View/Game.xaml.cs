@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Millionaire.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Millionaire.View
     /// </summary>
     public partial class Game : Window
     {
-        public Game()
+        public Game(Player p)
         {
             InitializeComponent();
             Controller controller = new Controller();

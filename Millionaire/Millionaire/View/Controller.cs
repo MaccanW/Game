@@ -14,6 +14,10 @@ namespace Millionaire.View
    public class Controller
     {
         DAL1 dal = new DAL1();
+        Admin activeAdmin;
+        Player activePlayer;
+
+        public Admin ActiveAdmin { get; set; }
 
         public bool CreateOrUpdateUser(string userName, string password, string userType, string sqlcommand)
         {
@@ -23,11 +27,19 @@ namespace Millionaire.View
         {
             dal.DeleteUser(userName);
         }
-        public bool CreateOrUpdateQuestion( int id, string question, string rightAnswer, int level, Category category, Admin creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
+        public bool CreateQuestion(string question, string rightAnswer, int level, Category category, Admin creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
         {
-           return dal.CreateOrUpdateQuestion(id, question, rightAnswer, level, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
+           return dal.CreateQuestion(question, rightAnswer, level, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
         }
-        public bool ValidateUser(string username, string password, string sqlCommand)
+
+        public bool UpdateQuestion(int id, string question, string rightAnswer, int level, Category category, Admin creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
+        {
+            return dal.UpdateQuestion(id, question, rightAnswer, level, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
+        }
+
+
+
+        public User ValidateUser(string username, string password, string sqlCommand)
         {
             return dal.ValidateUser(username, password, sqlCommand);
         }
@@ -55,5 +67,10 @@ namespace Millionaire.View
         {
             dal.DeleteScoreboardEntry(entryId); 
         }*/
+
+        public void DeleteQuestion(int questionID)
+        {
+            dal.DeleteQuestion(questionID);
+        }
     }
 }

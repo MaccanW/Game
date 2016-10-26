@@ -22,11 +22,14 @@ namespace Millionaire.View
     {
 
         Controller con = new Controller();
+        Admin ad;
 
-        public AdminQuestions()
+        public AdminQuestions(Admin a)
         {
             InitializeComponent();
+            ad = a;
             List<Category> catList = con.GetCategories();
+            testing.Text = a.UserName;
 
             foreach (Category c in catList)
             {
@@ -41,6 +44,15 @@ namespace Millionaire.View
             dataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
             //dataGrid.Items.Clear();
             this.dataGrid.ItemsSource = qList;
+            textBox.Text = null;
+            raTxt.Text = null;
+            wa1Txt.Text = null;
+            wa2Txt.Text = null;
+            wa3Txt.Text = null;
+            //qIdTxt.Text = null;
+            CatComboBox.Text = null;
+            lvlTxt.Text = null;
+
         }
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,7 +75,7 @@ namespace Millionaire.View
                 wa1Txt.Text = q.WrongAnswer1;
                 wa2Txt.Text = q.WrongAnswer2;
                 wa3Txt.Text = q.WrongAnswer3;
-                qIdTxt.Text = q.QuestionID.ToString();
+                //qIdTxt.Text = q.QuestionID.ToString();
                 lvlTxt.Text = q.Level.ToString();
                 CatComboBox.Text = q.Category.Categoryy;
                 
@@ -85,16 +97,33 @@ namespace Millionaire.View
             {
                 
                 Question q = (Question)dataGrid.SelectedItem;
-                con.CreateOrUpdateQuestion(q.QuestionID, textBox.Text, raTxt.Text, Convert.ToInt32(lvlTxt.Text), q.Category, q.Creator, wa1Txt.Text, wa2Txt.Text, wa3Txt.Text, "EXECUTE usp_updateQuestion");
+                con.UpdateQuestion(q.QuestionID, textBox.Text, raTxt.Text, Convert.ToInt32(lvlTxt.Text), q.Category, q.Creator, wa1Txt.Text, wa2Txt.Text, wa3Txt.Text, "EXECUTE usp_updateQuestion");
                 
             }
             catch
             {
+                Console.WriteLine("Hoppsan! Något gick fel!");
+                      
+            }
+        }
+
+        private void createBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Question q = new Question();
+            Category c = new Category((String)CatComboBox.SelectedItem);
+            try
+            {
+                con.CreateQuestion(textBox.Text, raTxt.Text, Convert.ToInt32(lvlTxt.Text), c, ad, wa1Txt.Text, wa2Txt.Text, wa3Txt.Text, "EXECUTE usp_createQuestion ");
+            }
+            catch{
                 
             }
-           
-           // con.CreateOrUpdateQuestion(q.QuestionID, )
+        }
 
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Question q = (Question)dataGrid.SelectedItem;
+            con.DeleteQuestion(q.QuestionID);
         }
     }
 }

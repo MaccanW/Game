@@ -71,8 +71,8 @@ namespace Millionaire.DAL
 
             }
         }
-        //Create or update question
-        public bool CreateOrUpdateQuestion(int id, string question, string rightAnswer, int level, Category category, Admin creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
+        //update question
+        public bool UpdateQuestion(int id, string question, string rightAnswer, int level, Category category, Admin creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
         {
             string sql = @sqlCommand + " "+ @id + ", '" + @question + "', '" + @rightAnswer + "', " + @level + ", '" + @category.Categoryy + "', '" + @creator.UserName + "', '" + @wrongAnswer1 + "', '" + @wrongAnswer2 + "', '" + @wrongAnswer3 + "'";
 
@@ -105,8 +105,42 @@ namespace Millionaire.DAL
 
         }
 
+        //Create question
+        public bool CreateQuestion(string question, string rightAnswer, int level, Category category, Admin creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
+        {
+            string sql = @sqlCommand + " '" + @question + "', '" + @rightAnswer + "', " + @level + ", '" + @category.Categoryy + "', '" + @creator.UserName + "', '" + @wrongAnswer1 + "', '" + @wrongAnswer2 + "', '" + @wrongAnswer3 + "'";
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+
+            /* cmd.Parameters.Add(new SqlParameter("id", id));
+             cmd.Parameters.Add(new SqlParameter("question", question));
+             cmd.Parameters.Add(new SqlParameter("rightAnswer", rightAnswer));
+             cmd.Parameters.Add(new SqlParameter("level", level));
+             cmd.Parameters.Add(new SqlParameter("category", category.Categoryy));
+             Category c = new Category(category.Categoryy);
+             String hej = c.Categoryy;
+             cmd.Parameters.Add(new SqlParameter(creator.ToString(), hej));
+             cmd.Parameters.Add(new SqlParameter("wrongAnswer1", wrongAnswer1));
+             cmd.Parameters.Add(new SqlParameter("wrongAnswer2", wrongAnswer1));
+             cmd.Parameters.Add(new SqlParameter("wrongAnswer3", wrongAnswer1));
+             cmd.Parameters.Add(new SqlParameter("sqlCommand", sqlCommand));*/
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                Connect().Close();
+                return true;
+            }
+            catch
+            {
+                Connect().Close();
+                return false;
+            }
+
+        }
+
         //Validate user
-        public bool ValidateUser(string userName, string password, string sqlCommand)
+        public User ValidateUser(string userName, string password, string sqlCommand)
         {
             string sql = @sqlCommand + " '" + @userName + "', '" + @password + "'";
 
@@ -117,17 +151,25 @@ namespace Millionaire.DAL
             cmd.Parameters.Add(new SqlParameter("userName", userName));
             cmd.Parameters.Add(new SqlParameter("userPassword", password));
 
+            String resultUserType;
+            String resultUserName;
+           
             try
             {
                 while (reader.Read())
                 {
+                    resultUserType = reader.GetString(0);
+                    resultUserName = reader.GetString(1);
 
-
-                    if (reader.GetInt32(0) == 1)
+                    if (resultUserType.Equals("Admin"))
                     {
 
                         Connect().Close();
-                        return true;
+                        return new Admin(resultUserName, null);
+
+                    }else if(resultUserType.Equals("Player"))
+                    {
+                        return new Player(resultUserName, null);
                     }
                 }
             }
@@ -136,7 +178,8 @@ namespace Millionaire.DAL
                 Console.WriteLine(s);
                 Connect().Close();
             }
-            return false;
+            return null;
+
         }
 
 
@@ -195,31 +238,6 @@ namespace Millionaire.DAL
         }
 
 
-
-
-        /*public Admin getAdmin(string userName)
-        {
-            string sql = "EXECUTE usp_getUser " + @userName;
-
-            SqlCommand cmd = new SqlCommand(sql, Connect());
-            cmd.Parameters.Add(new SqlParameter("userName", userName));
-
-            try
-            {
-                cmd.ExecuteNonQuery();
-                Connect().Close();
-                return u;
-            }
-            catch
-            {
-                Connect().Close();
-                return null;
-            }
-
-
-
-        }*/
-
         public List<Question> GetAllQuestions()
         {
             string sql = "EXECUTE usp_getAllQuestions";
@@ -275,6 +293,25 @@ namespace Millionaire.DAL
             {
                 return null;
             }
+        }
+
+        public void DeleteQuestion(int questionID)
+        {
+            string sql = "EXECUTE usp_deleteQuestion " + questionID;
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                Connect().Close();
+                
+            }
+            catch
+            {
+                Connect().Close();
+                
+            }
+
         }
 
 
