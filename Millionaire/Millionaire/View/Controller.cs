@@ -40,6 +40,10 @@ namespace Millionaire.View
         {
             return dal.GetAllQuestions();
         }
+        public Question GetQuestion(string category, int level)
+        {
+            return dal.GetQuestion(category, level);
+        }
         public List<ScoreboardEntry> GetScoreboardEntry()
         {
             return dal.GetScoreboardEntry();
