@@ -334,7 +334,7 @@ namespace Millionaire.DAL
 
         public Question GetQuestion(string category, int questionLevel)
         {
-            string sql = "EXECUTE usp_getRandomQuestion " + @category +", " + @questionLevel;
+            string sql = "EXECUTE usp_getRandomQuestion " +"'" + @category +"', " + @questionLevel;
             SqlCommand cmd = new SqlCommand(sql, Connect());
             SqlDataReader reader = cmd.ExecuteReader();
 
