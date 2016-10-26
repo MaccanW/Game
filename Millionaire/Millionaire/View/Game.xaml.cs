@@ -26,14 +26,17 @@ namespace Millionaire.View
         Player pl;
         public Game(Player player)
         {
+            InitializeComponent();
             pl = player;
             AddCategories();
             pointsLbl.Visibility = Visibility.Collapsed;
+            backBtn.Visibility = Visibility.Collapsed;
+            
 
         }
             private void AddCategories()
         {
-            questionLbl.Content = "Pick a category";
+            questionBlock.Text= "Pick a category";
             option_1Btn.Visibility = Visibility.Visible;
             option2Btn.Visibility = Visibility.Visible;
             option3Btn.Visibility = Visibility.Visible;
@@ -79,7 +82,7 @@ namespace Millionaire.View
             answer4Btn.Visibility = Visibility.Visible;
             List<string> randomAnswer = RandomAnswer(q);
             
-            questionLbl.Content = q.QuestionString;
+            questionBlock.Text = q.QuestionString;
            answer1Btn.Content = randomAnswer.ElementAt(0);
             answer2Btn.Content = randomAnswer.ElementAt(1);
             answer3Btn.Content = randomAnswer.ElementAt(2);
@@ -142,7 +145,7 @@ namespace Millionaire.View
             controller.CreateOrUpdateScoreboard(pl, score);
             HideVisible("answers");
             backgroundRec.Visibility = Visibility.Collapsed;
-            questionLbl.Content = "You lose! Your score: " + score;
+            questionBlock.Text =pl.UserName + " You lose! Your score: " + score;
             backBtn.Visibility = Visibility.Visible;
 
         }
@@ -167,7 +170,15 @@ namespace Millionaire.View
         {
            
             this.InitializeComponent();
+            this.Close();
+            OpenNewWindow();
            
+           
+        }
+        private void OpenNewWindow()
+        {
+            Game newGame = new Game(pl);
+            newGame.ShowDialog();
         }
     }
 }

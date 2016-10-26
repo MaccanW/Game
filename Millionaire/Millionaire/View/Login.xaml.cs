@@ -48,8 +48,7 @@ namespace Millionaire.View
 
                 }
                 else if (u.GetType().ToString().Equals("Millionaire.Model.Player"))
-                {
-                   u = controller.GetPlayer(usernameTxt.Text);
+                {   
                     Game gameWindow = new Game((Player)u);
                     gameWindow.Show();
                     this.Close();

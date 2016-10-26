@@ -5,26 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Millionaire.View"
         mc:Ignorable="d"
-        Title="Game" Height="480.646" Width="604.156">
+        Title="Game" Height="586.646" Width="865.823">
     <Grid Background="#FF2389DE" Margin="0,0,-6.667,0.333">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="474*"/>
-            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="158*"/>
+            <ColumnDefinition Width="324*"/>
+            <ColumnDefinition Width="115*"/>
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle x:Name="backgroundRec" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="299" Margin="25,136,0,0" Stroke="Black" VerticalAlignment="Top" Width="543" Grid.ColumnSpan="2"/>
-
-        <Label x:Name="questionLbl" Content="Pick a category" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Foreground="#DDF7F7F7" FontSize="24" Height="51" Width="577" Grid.ColumnSpan="2"/>
-        <Button x:Name="option_1Btn" Content="Button" HorizontalAlignment="Left" Margin="45,151,0,0" VerticalAlignment="Top" Width="171" Height="104" Background="#FF2389DE" Click="option_1Btn_Click"/>
-        <Button x:Name="option2Btn" Content="Button" HorizontalAlignment="Left" Margin="381,151,0,0" VerticalAlignment="Top" Width="171" Height="104" Background="#FF2389DE" Click="option_1Btn_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="option3Btn" Content="Button" HorizontalAlignment="Left" Margin="45,315,0,0" VerticalAlignment="Top" Width="171" Background="#FF2389DE" Height="104" Click="option_1Btn_Click"/>
-        <Button x:Name="option4Btn" Content="Button" HorizontalAlignment="Left" Margin="381,315,0,0" VerticalAlignment="Top" Width="171" Background="#FF2389DE" Height="104" Click="option_1Btn_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="answer1Btn" Content="Button" HorizontalAlignment="Left" Height="104" Margin="45,151,0,0" VerticalAlignment="Top" Width="171" Background="#FF2389DE" Click="answer1Btn_Click" Visibility="Collapsed"/>
-        <Button x:Name="answer2Btn" Content="Button" HorizontalAlignment="Left" Margin="381,151,0,0" VerticalAlignment="Top" Width="171" Height="104" Background="#FF2389DE" Grid.ColumnSpan="2" Click="answer1Btn_Click" Visibility="Collapsed"/>
-        <Button x:Name="answer3Btn" Content="Button" HorizontalAlignment="Left" Margin="45,315,0,0" VerticalAlignment="Top" Width="171" Height="104" Background="#FF2389DE" Click="answer1Btn_Click" Visibility="Collapsed"/>
-        <Button x:Name="answer4Btn" Content="Button" HorizontalAlignment="Left" Height="104" Margin="381,315,0,0" VerticalAlignment="Top" Width="171" Background="#FF2389DE" Grid.ColumnSpan="2" Click="answer1Btn_Click" Visibility="Collapsed"/>
+        <Rectangle x:Name="backgroundRec" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="376" Margin="45,151,0,0" Stroke="Black" VerticalAlignment="Top" Width="784" Grid.ColumnSpan="3"/>
+        <Button x:Name="option_1Btn" Content="Button" HorizontalAlignment="Left" Margin="93,178,0,0" VerticalAlignment="Top" Width="248" Height="148" Background="#FF2389DE" Click="option_1Btn_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="option2Btn" Content="Button" HorizontalAlignment="Left" Margin="297.333,178,0,0" VerticalAlignment="Top" Width="248" Height="148" Background="#FF2389DE" Click="option_1Btn_Click" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button x:Name="option3Btn" Content="Button" HorizontalAlignment="Left" Margin="93,361,0,0" VerticalAlignment="Top" Width="248" Background="#FF2389DE" Height="148" Click="option_1Btn_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="option4Btn" Content="Button" HorizontalAlignment="Left" Margin="297.333,361,0,0" VerticalAlignment="Top" Width="248" Background="#FF2389DE" Height="148" Click="option_1Btn_Click" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <Button x:Name="answer1Btn" Content="Button" HorizontalAlignment="Left" Height="148" Margin="93,178,0,0" VerticalAlignment="Top" Width="248" Background="#FF2389DE" Click="answer1Btn_Click" Grid.ColumnSpan="2" Visibility="Collapsed"/>
+        <Button x:Name="answer2Btn" Content="Button" HorizontalAlignment="Left" Margin="297.333,178,0,0" VerticalAlignment="Top" Width="248" Height="148" Background="#FF2389DE" Grid.ColumnSpan="2" Click="answer1Btn_Click" Grid.Column="1" Visibility="Collapsed"/>
+        <Button x:Name="answer3Btn" Content="Button" HorizontalAlignment="Left" Margin="93,361,0,0" VerticalAlignment="Top" Width="248" Height="148" Background="#FF2389DE" Click="answer1Btn_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="answer4Btn" Content="Button" HorizontalAlignment="Left" Height="148" Margin="297.333,361,0,0" VerticalAlignment="Top" Width="248" Background="#FF2389DE" Grid.ColumnSpan="2" Click="answer1Btn_Click" Grid.Column="1" Visibility="Collapsed"/>
         <Label x:Name="pointsLbl" Content="Your points: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontSize="16"/>
-        <Button x:Name="backBtn" Content="Try again!" HorizontalAlignment="Left" Margin="239,258,0,0" VerticalAlignment="Top" Width="115" Background="#FF2389DE" Click="backBtn_Click" Height="53"/>
+        <Button x:Name="backBtn" Content="Try again!" HorizontalAlignment="Left" Margin="464.333,69,0,0" VerticalAlignment="Top" Width="115" Background="#FF2389DE" Click="backBtn_Click" Height="53" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Image x:Name="___Millionaire_component_questionmark_png" Grid.Column="1" Margin="69.333,205,123.333,80" Source="/Millionaire;component/questionmark.png" Stretch="Fill"/>
+        <TextBlock x:Name="questionBlock" HorizontalAlignment="Left" Margin="65,60,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="75" Width="585" Foreground="White" FontSize="24"/>
 
     </Grid>
 </Window>
