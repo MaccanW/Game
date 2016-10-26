@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Millionaire.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Millionaire.View
@@ -24,24 +26,37 @@ namespace Millionaire.View
             InitializeComponent();
         }
         Controller controller = new Controller();
-        Game gameWindow = new Game();
+        
+        
           
             
 
         private void button_Click_1(object sender, RoutedEventArgs e)
-        {
-           if(controller.ValidateUser(usernameTxt.Text, passwordTxt.Text, "EXECUTE [usp_CheckUsername]"))
-            {
-                
-                gameWindow.Show();
-                this.Close();
+        {   
 
-            }
-           else
+            User u = controller.ValidateUser(usernameTxt.Text, passwordTxt.Text, "EXECUTE [usp_CheckLogin]");
+            try
             {
-                
-                Console.WriteLine(controller.ValidateUser(usernameTxt.Text, passwordTxt.Text, "EXECUTE usp_CheckUsername"));
-                Console.WriteLine("Log in failed");
+                if (u.GetType().ToString().Equals("Millionaire.Model.Admin"))
+                {
+
+                    AdminQuestions adminQuestionWindow = new AdminQuestions((Admin)u);
+                    adminQuestionWindow.Show();
+
+                    // controller.ActiveAdmin = new Admin(usernameTxt.Text, "");
+                    this.Close();
+
+                }
+                else if (u.GetType().ToString().Equals("Millionaire.Model.Player"))
+                {
+                    Game gameWindow = new Game((Player)u);
+                    gameWindow.Show();
+                    this.Close();
+                }
+            }
+            catch
+            {
+
             }
 
         }

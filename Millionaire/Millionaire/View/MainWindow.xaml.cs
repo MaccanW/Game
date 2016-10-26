@@ -24,7 +24,7 @@ namespace Millionaire
     {
         Controller controller = new Controller();
         Register registerWindow = new Register();
-        AdminQuestions adminquestionWindow = new AdminQuestions();
+        //AdminQuestions adminquestionWindow = new AdminQuestions(Admin a);
         login loginWindow = new login();
         Highscore highscoreWindow = new Highscore();
         
@@ -58,12 +58,12 @@ namespace Millionaire
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            adminquestionWindow.Show();
+           // adminquestionWindow.Show();
         }
 
         private void button1_Click_1(object sender, RoutedEventArgs e)
         {
-            adminquestionWindow.Show();
+            //adminquestionWindow.Show();
         }
     }
 }
