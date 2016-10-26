@@ -182,9 +182,9 @@ namespace Millionaire.DAL
         }
 
         //Create or update scoreboard 
-        public bool CreateOrUpdateScoreboard( User user, int points)
+        public bool CreateOrUpdateScoreboard(User user, int points)
         {
-            string sql = "execute usp_createScoreboardEntry '"  + @user.UserName + "', " + @points;
+            string sql = "execute usp_createScoreboardEntry '" + @user.UserName + "', " + @points;
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
             cmd.Parameters.Add(new SqlParameter("player", user.UserName));
@@ -253,7 +253,7 @@ namespace Millionaire.DAL
             }
 */
 
-    */
+ 
         public List<Question> GetAllQuestions()
         {
             string sql = "EXECUTE usp_getAllQuestions";
@@ -354,7 +354,7 @@ namespace Millionaire.DAL
 
         public Question GetQuestion(string category, int questionLevel)
         {
-            string sql = "EXECUTE usp_GetRandomQuestion " +"'" + @category +"', " + @questionLevel;
+            string sql = "EXECUTE usp_GetRandomQuestion " + "'" + @category + "', " + @questionLevel;
             SqlCommand cmd = new SqlCommand(sql, Connect());
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -413,11 +413,18 @@ namespace Millionaire.DAL
 
                     qList.Add(q);
 
-    }
+                }
+                return qList;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public Player GetPlayer(string userName)
         {
             string sql = "EXECUTE usp_GetUser " + "'" + @userName + "'";
-           
+
             SqlCommand cmd = new SqlCommand(sql, Connect());
             cmd.Parameters.Add(new SqlParameter("userName", userName));
             SqlDataReader reader = cmd.ExecuteReader();
@@ -429,5 +436,6 @@ namespace Millionaire.DAL
             }
             return null;
         }
+    }
 }
-}
+

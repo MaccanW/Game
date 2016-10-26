@@ -31,7 +31,8 @@ namespace Millionaire.View
             AddCategories();
             pointsLbl.Visibility = Visibility.Collapsed;
             backBtn.Visibility = Visibility.Collapsed;
-            
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
 
         }
             private void AddCategories()
