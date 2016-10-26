@@ -18,7 +18,9 @@ namespace Millionaire.View
         Player activePlayer;
 
         public Admin ActiveAdmin { get; set; }
-
+        public Player GetPlayer(string username) {
+            return dal.GetPlayer(username);
+        }
         public bool CreateOrUpdateUser(string userName, string password, string userType, string sqlcommand)
         {
             return dal.CreateOrUpdateUser(userName, password, userType, sqlcommand);
@@ -43,10 +45,10 @@ namespace Millionaire.View
         {
             return dal.ValidateUser(username, password, sqlCommand);
         }
-        /*private bool CreateOrUpdateScoreboard(int entryId, User user, int points)
+        public bool CreateOrUpdateScoreboard(User user, int points)
         {
-           return dal.CreateOrUpdateScoreboard(entryId, user, points);
-        }*/
+           return dal.CreateOrUpdateScoreboard(user, points);
+        }
 
         public List<Question> GetAllQuestions()
         {

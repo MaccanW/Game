@@ -17,22 +17,19 @@ using System.Windows.Shapes;
 namespace Millionaire.View
 {
 
-    /// <summary>
-    /// Interaction logic for Game.xaml
-    /// </summary>
     public partial class Game : Window
     {
         Controller controller = new Controller();
         int counter = 0;
         int score = 0;
         int levelCounter = 1;
-
+        Player pl;
         public Game(Player player)
         {
-
-            InitializeComponent();
+            pl = player;
             AddCategories();
-                    
+            pointsLbl.Visibility = Visibility.Collapsed;
+
         }
             private void AddCategories()
         {
@@ -65,11 +62,12 @@ namespace Millionaire.View
         Question rightQuestion = new Question();
         private void option_1Btn_Click(object sender, RoutedEventArgs e)
         {
-            string categoryName = "Science"; //sender.ToString().Remove(0,32) ;
+            string categoryName =  sender.ToString().Remove(0,32) ;
             Question q = controller.GetQuestion(categoryName, 3);
             rightQuestion = q;
             AddQuestions(q);
             HideVisible("options");
+            pointsLbl.Visibility = Visibility.Visible;
         }
        
 
@@ -112,11 +110,13 @@ namespace Millionaire.View
 
         private void answer1Btn_Click(object sender, RoutedEventArgs e)
         {
-            
+            pointsLbl.Content = score.ToString();
             string answer = sender.ToString().Remove(0, 32);
             if (answer.Equals(rightQuestion.RightAnswer))
             {
+                counter++;
                 CalculateScore();
+                pointsLbl.Content = "Your score: " + score;
                 if (counter > 5 || counter > 10)
                     levelCounter++;
               HideVisible("answers");
@@ -124,6 +124,7 @@ namespace Millionaire.View
             }
             else
             {
+                pointsLbl.Visibility = Visibility.Collapsed;
                 EndGame();
                 Console.WriteLine(counter);
             }
@@ -138,9 +139,12 @@ namespace Millionaire.View
 
         private void EndGame()
         {
+            controller.CreateOrUpdateScoreboard(pl, score);
             HideVisible("answers");
-            
-            questionLbl.Content = "You lose! Your score: " + score; 
+            backgroundRec.Visibility = Visibility.Collapsed;
+            questionLbl.Content = "You lose! Your score: " + score;
+            backBtn.Visibility = Visibility.Visible;
+
         }
         private void HideVisible(string type)
         {
@@ -157,6 +161,13 @@ namespace Millionaire.View
                 option3Btn.Visibility = Visibility.Collapsed;
                 option4Btn.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void backBtn_Click(object sender, RoutedEventArgs e)
+        {
+           
+            this.InitializeComponent();
+           
         }
     }
 }
