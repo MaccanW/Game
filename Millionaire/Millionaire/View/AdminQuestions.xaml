@@ -5,59 +5,93 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Millionaire.View"
         mc:Ignorable="d"
-        Title="AdminQuestions" Height="723.293" Width="1043.989">
+        Title="AdminQuestions" Height="744.293" Width="1022.989">
     <Grid Background="#FF2389E2" Margin="0,0,-8,-3" HorizontalAlignment="Left" Width="1044">
-        <Rectangle Fill="White" Margin="29,39,32,50" Stroke="Black" StrokeThickness="0" RadiusX="3" RadiusY="3"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="297" Margin="46,328,0,0" AutoGenerateColumns="False" VerticalAlignment="Top" Width="946" FontSize="12" FontStretch="ExtraCondensed" MinColumnWidth="10" MaxColumnWidth="200" SelectionChanged="dataGrid_SelectionChanged" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Creator"  Binding="{Binding Creator.UserName}"/>
-                <DataGridTextColumn Header="QID"  Binding="{Binding QuestionID}"/>
-                <DataGridTextColumn Header="QuestionString"  Binding="{Binding QuestionString}"/>
-                <DataGridTextColumn Header="RightAnswer"  Binding="{Binding RightAnswer}"/>
-                <DataGridTextColumn Header="Level"  Binding="{Binding Level}"/>
-                <DataGridTextColumn Header="Category"  Binding="{Binding Category.Categoryy}"/>
-                <DataGridTextColumn Header="WrongAnswer1"  Binding="{Binding WrongAnswer1}"/>
-                <DataGridTextColumn Header="WrongAnswer2"  Binding="{Binding WrongAnswer2}"/>
-                <DataGridTextColumn Header="WrongAnswer3"  Binding="{Binding WrongAnswer3}"/>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="664" Margin="24,24,0,0" VerticalAlignment="Top" Width="966" Background="White">
+            <TabItem Header="Användare">
+                <Grid Background="White">
+                    <DataGrid x:Name="datagridUser" HorizontalAlignment="Left" Height="394" Margin="38,198,0,0" VerticalAlignment="Top" Width="211" SelectionChanged="datagridUser_SelectionChanged" IsReadOnly="True" BorderBrush="#89000000"/>
+                    <TextBox x:Name="playernameTxt" HorizontalAlignment="Left" Height="30" Margin="38,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"/>
+                    <Button x:Name="deleteuserbtn" Content="Ta bort" HorizontalAlignment="Left" Margin="168,86,0,0" VerticalAlignment="Top" Width="81" Background="#FF2389E2" Click="deleteuserbtn_Click" Height="38" BorderBrush="#FF2389DE"/>
+                    <Border BorderBrush="#FF7C7C7C" BorderThickness="2,0,0,0" HorizontalAlignment="Left" Height="554" Margin="316,38,0,0" VerticalAlignment="Top" Width="3" Opacity="0.9" Background="#FFA4A4A4"/>
+                    <Button x:Name="showPlayers" Content="Visa spelare" HorizontalAlignment="Left" Margin="143,150,0,0" VerticalAlignment="Top" Width="106" Background="#FF2389E2" Click="button1_Click" Height="37" BorderBrush="#FF2389DE"/>
+                    <Label x:Name="label2" Content="Ta bort spelare" HorizontalAlignment="Left" Margin="38,20,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name="label2_Copy" Content="Lägg till Admin" HorizontalAlignment="Left" Margin="370,20,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="adminun" HorizontalAlignment="Left" Height="30" Margin="372,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="196"/>
+                    <TextBox x:Name="adminpw" HorizontalAlignment="Left" Height="30" Margin="372,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="196"/>
+                    <Label x:Name="label3" Content="Användarnamn:" HorizontalAlignment="Left" Margin="372,71,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label3_Copy" Content="Lösenord:" HorizontalAlignment="Left" Margin="372,163,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="AddAdminBtn" Content="Lägg till" HorizontalAlignment="Left" Margin="621,191,0,0" VerticalAlignment="Top" Width="111" Background="#FF2389E2" Click="AddAdminBtn_Click"/>
+                    <Border BorderBrush="#FF7C7C7C" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Height="3" Margin="370,262,0,0" VerticalAlignment="Top" Width="533" Opacity="0.9" Background="#FFA4A4A4" RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Frågor">
+                <Grid Background="White">
+                    <Rectangle Fill="White" Margin="-4,10,10,0" Stroke="Black" StrokeThickness="0" RadiusX="3" RadiusY="3"/>
+                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="297" Margin="13,299,0,0" AutoGenerateColumns="False" VerticalAlignment="Top" Width="933" FontSize="12" FontStretch="ExtraCondensed" MinColumnWidth="10" MaxColumnWidth="140" SelectionChanged="dataGrid_SelectionChanged" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Creator"  Binding="{Binding Creator.UserName}"/>
+                            <DataGridTextColumn Header="QID"  Binding="{Binding QuestionID}"/>
+                            <DataGridTextColumn Header="QuestionString"  Binding="{Binding QuestionString}"/>
+                            <DataGridTextColumn Header="RightAnswer"  Binding="{Binding RightAnswer}"/>
+                            <DataGridTextColumn Header="Level"  Binding="{Binding Level}"/>
+                            <DataGridTextColumn Header="Category"  Binding="{Binding Category.Categoryy}"/>
+                            <DataGridTextColumn Header="WrongAnswer1"  Binding="{Binding WrongAnswer1}"/>
+                            <DataGridTextColumn Header="WrongAnswer2"  Binding="{Binding WrongAnswer2}"/>
+                            <DataGridTextColumn Header="WrongAnswer3"  Binding="{Binding WrongAnswer3}"/>
+                            <DataGridTextColumn Header="Date"  Binding="{Binding Date}"/>
 
-            </DataGrid.Columns>
-        </DataGrid>
-        <TextBox x:Name="textBox" VerticalContentAlignment="Top" HorizontalAlignment="Left" Height="51" Margin="57,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="531" RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,1" BorderBrush="Black" FontSize="14" TextAlignment="Left" ForceCursor="True">
-            <TextBox.ContextMenu>
-                <ContextMenu/>
-            </TextBox.ContextMenu>
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="-0.222"/>
-                    <RotateTransform/>
-                    <TranslateTransform Y="-0.996"/>
-
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
 
 
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBox x:Name="textBox" VerticalContentAlignment="Top" HorizontalAlignment="Left" Height="51" Margin="24,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="531" RenderTransformOrigin="0.5,0.5" BorderThickness="0,0,0,1" BorderBrush="Black" FontSize="14" TextAlignment="Left" ForceCursor="True">
+                        <TextBox.ContextMenu>
+                            <ContextMenu/>
+                        </TextBox.ContextMenu>
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="-0.222"/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="-0.996"/>
 
-        <Label x:Name="questionLbl" Content="Fråga:" HorizontalAlignment="Left" Margin="46,53,0,0" VerticalAlignment="Top" Width="45" FontWeight="Bold"/>
-        <TextBox x:Name="raTxt" VerticalContentAlignment="Top" HorizontalAlignment="Left" Height="40" Margin="69,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237"/>
-        <TextBox x:Name="wa3Txt" VerticalContentAlignment="Top" HorizontalAlignment="Left" Height="40" Margin="347,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
-        <TextBox x:Name="wa2Txt" VerticalContentAlignment="Top" HorizontalAlignment="Left" Height="40" Margin="69,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
-        <TextBox x:Name="wa1Txt" VerticalContentAlignment="Top" HorizontalAlignment="Left" Height="40" Margin="347,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
-        <Label x:Name="label" Content="Rätt svar:" HorizontalAlignment="Left" Margin="56,133,0,0" VerticalAlignment="Top" Width="71" FontWeight="Bold"/>
-        <Label x:Name="label_Copy" Content="Fel svar 2:" HorizontalAlignment="Left" Margin="56,223,0,0" VerticalAlignment="Top" Width="71" FontWeight="Bold"/>
-        <Label x:Name="label_Copy1" Content="Fel svar 3:" HorizontalAlignment="Left" Margin="335,223,0,0" VerticalAlignment="Top" Width="71" FontWeight="Bold"/>
-        <Label x:Name="label_Copy2" Content="Fel svar 1:" HorizontalAlignment="Left" Margin="335,133,0,0" VerticalAlignment="Top" Width="71" FontWeight="Bold"/>
-        <ComboBox x:Name="CatComboBox" HorizontalAlignment="Left" Margin="688,164,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CatComboBox_SelectionChanged"/>
-        <Label x:Name="label1" Content="Kategori:" HorizontalAlignment="Left" Margin="679,128,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button x:Name="button_Copy" Content="Visa" HorizontalAlignment="Left" Margin="869,271,0,0" VerticalAlignment="Top" Width="100" Click="button_Click" Cursor="Hand" Background="#FF2389DE" Height="29" BorderBrush="#FF0068FF" BorderThickness="0"/>
-        <Button x:Name="updateBtn" Content="Ändra" HorizontalAlignment="Left" Margin="749,271,0,0" VerticalAlignment="Top" Width="88" Background="#FF2389DE" Click="updateBtn_Click"/>
-        <Label x:Name="label2" Content="ID:" HorizontalAlignment="Left" Margin="679,61,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="1.423,0.5"/>
-        <Label x:Name="lvlLbl" Content="Nivå:" HorizontalAlignment="Left" Margin="810,61,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="lvlTxt" HorizontalAlignment="Left" Height="31" Margin="826,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" IsReadOnlyCaretVisible="True"/>
-        <Button x:Name="createBtn" Content="Lägg till" HorizontalAlignment="Left" Margin="634,271,0,0" VerticalAlignment="Top" Width="93" Background="#FF2389DE" Click="createBtn_Click"/>
-        <Button x:Name="deleteBtn" Content="Ta bort" HorizontalAlignment="Left" Margin="749,220,0,0" VerticalAlignment="Top" Width="88" Background="#FF2389DE" Click="deleteBtn_Click"/>
-        <TextBox x:Name="testing" HorizontalAlignment="Left" Height="37" Margin="464,39,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+                    </TextBox>
 
+
+
+                    <Label x:Name="questionLbl" Content="Fråga:" HorizontalAlignment="Left" Margin="13,24,0,0" VerticalAlignment="Top" Width="45" FontWeight="Bold"/>
+                    <TextBox x:Name="raTxt" VerticalContentAlignment="Top" HorizontalAlignment="Left" Height="40" Margin="36,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237"/>
+                    <TextBox x:Name="wa3Txt" VerticalContentAlignment="Top" HorizontalAlignment="Left" Height="40" Margin="314,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+                    <TextBox x:Name="wa2Txt" VerticalContentAlignment="Top" HorizontalAlignment="Left" Height="40" Margin="36,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+                    <TextBox x:Name="wa1Txt" VerticalContentAlignment="Top" HorizontalAlignment="Left" Height="40" Margin="314,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"/>
+                    <Label x:Name="label" Content="Rätt svar:" HorizontalAlignment="Left" Margin="23,104,0,0" VerticalAlignment="Top" Width="71" FontWeight="Bold"/>
+                    <Label x:Name="label_Copy" Content="Fel svar 2:" HorizontalAlignment="Left" Margin="23,194,0,0" VerticalAlignment="Top" Width="71" FontWeight="Bold"/>
+                    <Label x:Name="label_Copy1" Content="Fel svar 3:" HorizontalAlignment="Left" Margin="302,194,0,0" VerticalAlignment="Top" Width="71" FontWeight="Bold"/>
+                    <Label x:Name="label_Copy2" Content="Fel svar 1:" HorizontalAlignment="Left" Margin="302,104,0,0" VerticalAlignment="Top" Width="71" FontWeight="Bold"/>
+                    <ComboBox x:Name="CatComboBox" HorizontalAlignment="Left" Margin="655,135,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CatComboBox_SelectionChanged"/>
+                    <Label x:Name="label1" Content="Kategori:" HorizontalAlignment="Left" Margin="646,99,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Button x:Name="button_Copy" Content="Visa aktiva" HorizontalAlignment="Left" Margin="817,242,0,0" VerticalAlignment="Top" Width="114" Click="button_Click" Cursor="Hand" Background="#FF2389DE" Height="32" BorderBrush="#FF2389DE" BorderThickness="1" FontSize="12"/>
+                    <Button x:Name="updateBtn" Content="Ändra" HorizontalAlignment="Left" Margin="578,242,0,0" VerticalAlignment="Top" Width="107" Background="#FF2389DE" Click="updateBtn_Click" FontSize="12"/>
+                    <Label x:Name="lvlLbl" Content="Nivå:" HorizontalAlignment="Left" Margin="646,32,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="lvlTxt" HorizontalAlignment="Left" Height="31" Margin="655,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" IsReadOnlyCaretVisible="True"/>
+                    <Button x:Name="createBtn" Content="Lägg till" HorizontalAlignment="Left" Margin="694,191,0,0" VerticalAlignment="Top" Width="114" Background="#FF2389DE" Click="createBtn_Click" FontSize="12" BorderBrush="#FF2389DE"/>
+                    <Button x:Name="deleteBtn" Content="Ta bort" HorizontalAlignment="Left" Margin="694,242,0,0" VerticalAlignment="Top" Width="114" Background="#FF2389DE" Click="deleteBtn_Click" FontSize="12" BorderBrush="#FF2389DE"/>
+                    <Button x:Name="button" Content="Rensa fält" HorizontalAlignment="Left" Margin="578,191,0,0" VerticalAlignment="Top" Width="107" Background="#FF2389DE" Click="button_Click_1" RenderTransformOrigin="0.252,0.469" FontSize="12" BorderBrush="#FF2389DE"/>
+                    <Button x:Name="button1" Content="Visa borttagna" HorizontalAlignment="Left" Margin="817,191,0,0" VerticalAlignment="Top" Width="114" Background="#FF2389DE" FontSize="12" Click="button1_Click_1" BorderBrush="#FF2389DE"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

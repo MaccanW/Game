@@ -29,7 +29,7 @@ namespace Millionaire.View
             InitializeComponent();
             ad = a;
             List<Category> catList = con.GetCategories();
-            testing.Text = a.UserName;
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
             foreach (Category c in catList)
             {
@@ -69,6 +69,7 @@ namespace Millionaire.View
         {
             try
             {
+
                 Question q = (Question)dataGrid.SelectedItem;
                 textBox.Text = q.QuestionString;
                 raTxt.Text = q.RightAnswer;
@@ -78,11 +79,27 @@ namespace Millionaire.View
                 //qIdTxt.Text = q.QuestionID.ToString();
                 lvlTxt.Text = q.Level.ToString();
                 CatComboBox.Text = q.Category.Categoryy;
-                
-                
-            }catch
+
+            }
+            catch
             {
-                
+                try
+                {
+                    LegacyQuestion lq = (LegacyQuestion)dataGrid.SelectedItem;
+                    textBox.Text = lq.QuestionString;
+                    raTxt.Text = lq.RightAnswer;
+                    wa1Txt.Text = lq.WrongAnswer1;
+                    wa2Txt.Text = lq.WrongAnswer2;
+                    wa3Txt.Text = lq.WrongAnswer3;
+                    //qIdTxt.Text = q.QuestionID.ToString();
+                    lvlTxt.Text = lq.Level.ToString();
+                    CatComboBox.Text = lq.Category.Categoryy;
+                }
+                catch
+                {
+
+                }
+
             }
         }
 
@@ -124,6 +141,90 @@ namespace Millionaire.View
         {
             Question q = (Question)dataGrid.SelectedItem;
             con.DeleteQuestion(q.QuestionID);
+            List<Question> qList = con.GetAllQuestions();
+            //dataGrid.Items.Add(qList);
+            dataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
+            //dataGrid.Items.Clear();
+            this.dataGrid.ItemsSource = qList;
+            textBox.Text = null;
+            raTxt.Text = null;
+            wa1Txt.Text = null;
+            wa2Txt.Text = null;
+            wa3Txt.Text = null;
+            //qIdTxt.Text = null;
+            CatComboBox.Text = null;
+            lvlTxt.Text = null;
+        }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            textBox.Text = null;
+            raTxt.Text = null;
+            wa1Txt.Text = null;
+            wa2Txt.Text = null;
+            wa3Txt.Text = null;
+            //qIdTxt.Text = null;
+            CatComboBox.Text = null;
+            lvlTxt.Text = null;
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            List<Player> pList = con.GetPlayers();
+            datagridUser.ClearValue(ItemsControl.ItemsSourceProperty);
+            this.datagridUser.ItemsSource = pList;
+           
+
+        }
+
+        private void datagridUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Player p = (Player)datagridUser.SelectedItem;
+                playernameTxt.Text = p.UserName;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void deleteuserbtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                con.DeleteUser(playernameTxt.Text);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void AddAdminBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                con.CreateOrUpdateUser(adminun.Text, adminpw.Text, "Admin", "EXECUTE usp_CreateUser");
+            }catch
+            {
+
+            }
+        }
+
+        private void button1_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                List<LegacyQuestion> lqList = con.GetAllLegacyQuestions();
+                dataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
+                this.dataGrid.ItemsSource = lqList;
+            }
+            catch
+            {
+
+            }
         }
     }
 }

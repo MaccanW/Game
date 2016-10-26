@@ -5,16 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Millionaire.View"
         mc:Ignorable="d"
-        Title="login" Height="300" Width="300">
+        Title="login" Height="305" Width="310">
     <Grid Background="#FF2389DE">
-        <Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="223" Margin="28,20,0,0" VerticalAlignment="Top" Width="228" Background="White" CornerRadius="3">
-        </Border>
-        <TextBox x:Name="usernameTxt" HorizontalAlignment="Left" Height="30" Margin="81,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="passwordTxt" HorizontalAlignment="Left" Height="29" Margin="81,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="button" Content="Log in" HorizontalAlignment="Left" Margin="98,185,0,0" VerticalAlignment="Top" Width="75" Click="button_Click_1" Background="#FF2389DE"/>
-        <Label x:Name="label" Content="Logga in&#xD;&#xA;" HorizontalAlignment="Left" Margin="98,27,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.259,1.014" FontSize="18" FontWeight="Bold" Width="91" Height="37"/>
-        <Label x:Name="label1" Content="Användarnamn:" HorizontalAlignment="Left" Margin="79,65,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1_Copy" Content="Lösenord:" HorizontalAlignment="Left" Margin="78,119,0,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="0" Margin="32,20,32,27" Background="White" CornerRadius="3"/>
+        <TextBox x:Name="usernameTxt" Height="27" Margin="86,91,86,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Log in" Margin="108,188,109,50" Click="button_Click_1" Background="#FF2389DE" Height="Auto" BorderBrush="#FF2389DE"/>
+        <Label x:Name="label" Content="Logga in&#xD;&#xA;" Margin="101,26,100,0" VerticalAlignment="Top" RenderTransformOrigin="-5.259,1.014" FontSize="18" FontWeight="Bold" Height="37"/>
+        <Label x:Name="label1_Copy" Content="Lösenord:" Margin="85,119,100,0" VerticalAlignment="Top" Height="29"/>
+        <Label x:Name="label1" Content="Användarnamn:" HorizontalAlignment="Left" Margin="85,63,0,174"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="85,148,0,0" VerticalAlignment="Top" Width="131"/>
 
     </Grid>
 </Window>

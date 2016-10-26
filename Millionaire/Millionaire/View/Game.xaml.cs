@@ -25,15 +25,18 @@ namespace Millionaire.View
         Controller controller = new Controller();
         int counter = 0;
         int levelCounter = 0;
-        public Game()
+        
+        public Game(Player p)
         {
             InitializeComponent();
             AddCategories();
-                    
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
         }
             private void AddCategories()
         {
-            questionLbl.Content = "Pick a category";
+            textBlock.Text = "Välj kategori";
+            //questionLbl.Content = "Pick a category";
             option_1Btn.Visibility = Visibility.Visible;
             option2Btn.Visibility = Visibility.Visible;
             option3Btn.Visibility = Visibility.Visible;
@@ -62,8 +65,8 @@ namespace Millionaire.View
         Question rightQuestion = new Question();
         private void option_1Btn_Click(object sender, RoutedEventArgs e)
         {
-            string categoryName = "Science"; //sender.ToString().Remove(0,32) ;
-            Question q = controller.GetQuestion(categoryName, 3);
+            //string categoryName = "Science"; //sender.ToString().Remove(0,32) ;
+            Question q = controller.GetQuestion(option_1Btn.Content.ToString(), 1);
             rightQuestion = q;
             AddQuestions(q);
             HideVisible("options");
@@ -78,8 +81,9 @@ namespace Millionaire.View
             answer4Btn.Visibility = Visibility.Visible;
             List<string> randomAnswer = RandomAnswer(q);
             
-            questionLbl.Content = q.QuestionString;
-           answer1Btn.Content = randomAnswer.ElementAt(0);
+            //questionLbl.Content = q.QuestionString;
+            textBlock.Text = q.QuestionString;
+            answer1Btn.Content = randomAnswer.ElementAt(0);
             answer2Btn.Content = randomAnswer.ElementAt(1);
             answer3Btn.Content = randomAnswer.ElementAt(2);
             answer4Btn.Content = randomAnswer.ElementAt(3);
@@ -133,8 +137,9 @@ namespace Millionaire.View
         private void EndGame()
         {
             HideVisible("answers");
-            
-            questionLbl.Content = "You lose! Your score: " + counter; 
+            textBlock.Text = "Du förlorade! Dina poänd: " + counter;
+            //questionLbl.Content = "You lose! Your score: " + counter; 
+
         }
         private void HideVisible(string type)
         {

@@ -74,22 +74,22 @@ namespace Millionaire.DAL
         //update question
         public bool UpdateQuestion(int id, string question, string rightAnswer, int level, Category category, Admin creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
         {
-            string sql = @sqlCommand + " "+ @id + ", '" + @question + "', '" + @rightAnswer + "', " + @level + ", '" + @category.Categoryy + "', '" + @creator.UserName + "', '" + @wrongAnswer1 + "', '" + @wrongAnswer2 + "', '" + @wrongAnswer3 + "'";
+            string sql = @sqlCommand + " " + @id + ", '" + @question + "', '" + @rightAnswer + "', " + @level + ", '" + @category.Categoryy + "', '" + @creator.UserName + "', '" + @wrongAnswer1 + "', '" + @wrongAnswer2 + "', '" + @wrongAnswer3 + "'";
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
 
-           /* cmd.Parameters.Add(new SqlParameter("id", id));
-            cmd.Parameters.Add(new SqlParameter("question", question));
-            cmd.Parameters.Add(new SqlParameter("rightAnswer", rightAnswer));
-            cmd.Parameters.Add(new SqlParameter("level", level));
-            cmd.Parameters.Add(new SqlParameter("category", category.Categoryy));
-            Category c = new Category(category.Categoryy);
-            String hej = c.Categoryy;
-            cmd.Parameters.Add(new SqlParameter(creator.ToString(), hej));
-            cmd.Parameters.Add(new SqlParameter("wrongAnswer1", wrongAnswer1));
-            cmd.Parameters.Add(new SqlParameter("wrongAnswer2", wrongAnswer1));
-            cmd.Parameters.Add(new SqlParameter("wrongAnswer3", wrongAnswer1));
-            cmd.Parameters.Add(new SqlParameter("sqlCommand", sqlCommand));*/
+            /* cmd.Parameters.Add(new SqlParameter("id", id));
+             cmd.Parameters.Add(new SqlParameter("question", question));
+             cmd.Parameters.Add(new SqlParameter("rightAnswer", rightAnswer));
+             cmd.Parameters.Add(new SqlParameter("level", level));
+             cmd.Parameters.Add(new SqlParameter("category", category.Categoryy));
+             Category c = new Category(category.Categoryy);
+             String hej = c.Categoryy;
+             cmd.Parameters.Add(new SqlParameter(creator.ToString(), hej));
+             cmd.Parameters.Add(new SqlParameter("wrongAnswer1", wrongAnswer1));
+             cmd.Parameters.Add(new SqlParameter("wrongAnswer2", wrongAnswer1));
+             cmd.Parameters.Add(new SqlParameter("wrongAnswer3", wrongAnswer1));
+             cmd.Parameters.Add(new SqlParameter("sqlCommand", sqlCommand));*/
 
             try
             {
@@ -153,7 +153,7 @@ namespace Millionaire.DAL
 
             String resultUserType;
             String resultUserName;
-           
+
             try
             {
                 while (reader.Read())
@@ -167,7 +167,8 @@ namespace Millionaire.DAL
                         Connect().Close();
                         return new Admin(resultUserName, null);
 
-                    }else if(resultUserType.Equals("Player"))
+                    }
+                    else if (resultUserType.Equals("Player"))
                     {
                         return new Player(resultUserName, null);
                     }
@@ -252,7 +253,7 @@ namespace Millionaire.DAL
                 Connect().Close();
                 return null;
             }
-
+*/
 
         public List<Question> GetAllQuestions()
         {
@@ -320,19 +321,41 @@ namespace Millionaire.DAL
             {
                 cmd.ExecuteNonQuery();
                 Connect().Close();
-                
+
             }
             catch
             {
                 Connect().Close();
-                
+
             }
 
         }
 
+
+        public List<Player> GetPlayers()
+        {
+            string sql = "EXECUTE usp_GetPlayers";
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<Player> pList = new List<Player>();
+            try
+            {
+                while (reader.Read())
+                {
+                    Player p = new Player(reader.GetString(0), reader.GetString(1));
+                    pList.Add(p);
+                }
+                return pList;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public Question GetQuestion(string category, int questionLevel)
         {
-            string sql = "EXECUTE usp_getRandomQuestion " + @category +", " + @questionLevel;
+            string sql = "EXECUTE usp_getRandomQuestion '" + @category + "', " + @questionLevel;
             SqlCommand cmd = new SqlCommand(sql, Connect());
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -343,7 +366,7 @@ namespace Millionaire.DAL
                 Question question = new Question();
                 while (reader.Read())
                 {
-                    
+
                     question.QuestionID = reader.GetInt32(0);
                     question.QuestionString = reader.GetString(1);
                     question.RightAnswer = reader.GetString(2);
@@ -356,8 +379,50 @@ namespace Millionaire.DAL
 
                 }
                 return question;
-            }catch { return null; }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<LegacyQuestion> GetAllLegacyQuestions()
+        {
+            string sql = "EXECUTE usp_GetAllLegacyQuestions";
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            List<LegacyQuestion> qList = new List<LegacyQuestion>();
+            try
+            {
+                while (reader.Read())
+                {
+                    LegacyQuestion q = new LegacyQuestion();
+
+                    q.QuestionID = reader.GetInt32(0);
+                    q.Date = reader.GetSqlDateTime(1).ToString();
+                    q.QuestionString = reader.GetString(2);
+                    q.RightAnswer = reader.GetString(3);
+                    q.Level = reader.GetInt32(4);
+                    q.Category = new Category(reader.GetString(5));
+                    q.Creator = new Admin(reader.GetString(6), "passWord");
+                    q.WrongAnswer1 = reader.GetString(7);
+                    q.WrongAnswer2 = reader.GetString(8);
+                    q.WrongAnswer3 = reader.GetString(9);
+
+                    qList.Add(q);
+
+                }
+                return qList;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
 
     }
-}
 }

@@ -52,6 +52,12 @@ namespace Millionaire.View
         {
             return dal.GetAllQuestions();
         }
+
+        public List<LegacyQuestion> GetAllLegacyQuestions()
+        {
+            return dal.GetAllLegacyQuestions();
+        }
+
         public Question GetQuestion(string category, int level)
         {
             return dal.GetQuestion(category, level);
@@ -75,6 +81,11 @@ namespace Millionaire.View
         public void DeleteQuestion(int questionID)
         {
             dal.DeleteQuestion(questionID);
+        }
+
+        public List<Player> GetPlayers()
+        {
+            return dal.GetPlayers();
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Millionaire.View
         public login()
         {
             InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
         Controller controller = new Controller();
         
@@ -34,7 +35,7 @@ namespace Millionaire.View
         private void button_Click_1(object sender, RoutedEventArgs e)
         {   
 
-            User u = controller.ValidateUser(usernameTxt.Text, passwordTxt.Text, "EXECUTE [usp_CheckLogin]");
+            User u = controller.ValidateUser(usernameTxt.Text, passwordBox.Password, "EXECUTE [usp_CheckLogin]");
             try
             {
                 if (u.GetType().ToString().Equals("Millionaire.Model.Admin"))
@@ -42,8 +43,6 @@ namespace Millionaire.View
 
                     AdminQuestions adminQuestionWindow = new AdminQuestions((Admin)u);
                     adminQuestionWindow.Show();
-
-                    // controller.ActiveAdmin = new Admin(usernameTxt.Text, "");
                     this.Close();
 
                 }

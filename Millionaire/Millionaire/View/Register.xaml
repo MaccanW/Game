@@ -5,11 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Millionaire.View"
         mc:Ignorable="d"
-        Title="Register" Height="300" Width="300">
+        Title="Register" Height="305" Width="310">
     <Grid Background="#FF2389DE">
-        <Button x:Name="button" Content="Register" HorizontalAlignment="Left" Margin="102,168,0,0" VerticalAlignment="Top" Width="90" Background="#FF2589DE" Click="button_Click"/>
-        <TextBox x:Name="userNameTxt" HorizontalAlignment="Left" Height="23" Margin="91,55,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="120" Foreground="White"/>
-        <TextBox x:Name="passwordTxt" HorizontalAlignment="Left" Height="23" Margin="91,111,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120" Foreground="White"/>
+        <Border BorderBrush="Black" BorderThickness="0" Margin="32,20,32,27" Background="White" CornerRadius="3">
+            <Label x:Name="label" Content="Registera&#xA;" Margin="69,6,68,0" VerticalAlignment="Top" RenderTransformOrigin="-5.259,1.014" FontSize="18" FontWeight="Bold" Height="35"/>
+        </Border>
+        <Button x:Name="button" Content="Register" Margin="101,188,101,50" Background="#FF2589DE" Click="button_Click" Height="Auto" BorderBrush="#FF2389DE"/>
+        <TextBox x:Name="userNameTxt" Height="27" Margin="86,88,86,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black"/>
+        <Label x:Name="label1" Content="Användarnamn:" Margin="85,65,114,179"/>
+        <Label x:Name="label2" Content="Lösenord:" HorizontalAlignment="Left" Margin="85,127,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="86,153,0,0" VerticalAlignment="Top" Width="130"/>
 
     </Grid>
 </Window>

@@ -12,17 +12,16 @@
             <ColumnDefinition Width="113*"/>
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="299" Margin="25,136,0,0" Stroke="Black" VerticalAlignment="Top" Width="543" Grid.ColumnSpan="2"/>
-
-        <Label x:Name="questionLbl" Content="Pick a category" HorizontalAlignment="Left" Margin="207,48,0,0" VerticalAlignment="Top" Foreground="#DDF7F7F7" FontSize="26.667" Height="51" Width="390" Grid.ColumnSpan="3"/>
-        <Button x:Name="option_1Btn" Content="Button" HorizontalAlignment="Left" Margin="45,151,0,0" VerticalAlignment="Top" Width="171" Height="104" Background="#FF2389DE" Click="option_1Btn_Click"/>
-        <Button x:Name="option2Btn" Content="Button" HorizontalAlignment="Left" Margin="381,151,0,0" VerticalAlignment="Top" Width="171" Height="104" Background="#FF2389DE" Click="option_1Btn_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="option3Btn" Content="Button" HorizontalAlignment="Left" Margin="45,315,0,0" VerticalAlignment="Top" Width="171" Background="#FF2389DE" Height="104" Click="option_1Btn_Click"/>
-        <Button x:Name="option4Btn" Content="Button" HorizontalAlignment="Left" Margin="381,315,0,0" VerticalAlignment="Top" Width="171" Background="#FF2389DE" Height="104" Click="option_1Btn_Click" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="299" Margin="25,136,0,0" Stroke="#89000000" VerticalAlignment="Top" Width="543" Grid.ColumnSpan="2" StrokeThickness="0" RadiusX="3" RadiusY="3"/>
+        <Button x:Name="option_1Btn" Content="Button" HorizontalAlignment="Left" Margin="45,151,0,0" VerticalAlignment="Top" Width="235" Height="121" Background="#FF2389DE" Click="option_1Btn_Click" BorderBrush="#FF2389DE"/>
+        <Button x:Name="option2Btn" Content="Button" HorizontalAlignment="Left" Margin="315,151,0,0" VerticalAlignment="Top" Width="237" Height="121" Background="#FF2389DE" Click="option_1Btn_Click" Grid.ColumnSpan="2" BorderBrush="#FF2389DE"/>
+        <Button x:Name="option3Btn" Content="Button" HorizontalAlignment="Left" Margin="45,298,0,0" VerticalAlignment="Top" Width="235" Background="#FF2389DE" Height="121" Click="option_1Btn_Click" BorderBrush="#FF2389DE"/>
+        <Button x:Name="option4Btn" Content="Button" HorizontalAlignment="Left" Margin="315,298,0,0" VerticalAlignment="Top" Width="237" Background="#FF2389DE" Height="121" Click="option_1Btn_Click" Grid.ColumnSpan="2" BorderBrush="#FF2389DE"/>
         <Button x:Name="answer1Btn" Content="Button" HorizontalAlignment="Left" Height="104" Margin="45,151,0,0" VerticalAlignment="Top" Width="171" Background="#FF2389DE" Click="answer1Btn_Click" Visibility="Collapsed"/>
         <Button x:Name="answer2Btn" Content="Button" HorizontalAlignment="Left" Margin="381,151,0,0" VerticalAlignment="Top" Width="171" Height="104" Background="#FF2389DE" Grid.ColumnSpan="2" Click="answer1Btn_Click" Visibility="Collapsed"/>
         <Button x:Name="answer3Btn" Content="Button" HorizontalAlignment="Left" Margin="45,315,0,0" VerticalAlignment="Top" Width="171" Height="104" Background="#FF2389DE" Click="answer1Btn_Click" Visibility="Collapsed"/>
         <Button x:Name="answer4Btn" Content="Button" HorizontalAlignment="Left" Height="104" Margin="381,315,0,0" VerticalAlignment="Top" Width="171" Background="#FF2389DE" Grid.ColumnSpan="2" Click="answer1Btn_Click" Visibility="Collapsed"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="31,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="537" Height="101" FontSize="26" Foreground="White" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

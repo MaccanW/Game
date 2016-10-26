@@ -24,8 +24,8 @@ namespace Millionaire.View
         public Highscore()
         {
             Controller controller = new Controller();
-            
 
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
             InitializeComponent();
 

@@ -26,13 +26,13 @@ namespace Millionaire.View
         {
          
             InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
 
-              
-    }
+        }
         private void button_Click(object sender, RoutedEventArgs e)
         {
-             if (controller.CreateOrUpdateUser(userNameTxt.Text, passwordTxt.Text, "Player", "EXECUTE usp_CreateUser"))
+             if (controller.CreateOrUpdateUser(userNameTxt.Text, passwordBox.Password, "Player", "EXECUTE usp_CreateUser"))
             {
                 try {
                     this.Hide();
