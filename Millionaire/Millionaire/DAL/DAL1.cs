@@ -139,9 +139,6 @@ namespace Millionaire.DAL
             return false;
         }
 
-
-
-
         //Create or update scoreboard 
         private bool CreateOrUpdateScoreboard(int entryId, User user, int points)
         {
@@ -193,9 +190,6 @@ namespace Millionaire.DAL
                 return entryList;
             }
         }
-
-
-
 
         /*public Admin getAdmin(string userName)
         {
@@ -277,6 +271,34 @@ namespace Millionaire.DAL
             }
         }
 
+        public Question GetQuestion(string category, int questionLevel)
+        {
+            string sql = "EXECUTE usp_getRandomQuestion " + @category +", " + @questionLevel;
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+            SqlDataReader reader = cmd.ExecuteReader();
 
+            cmd.Parameters.Add(new SqlParameter("category", category));
+            cmd.Parameters.Add(new SqlParameter("questionLevel", questionLevel));
+            try
+            {
+                Question question = new Question();
+                while (reader.Read())
+                {
+                    
+                    question.QuestionID = reader.GetInt32(0);
+                    question.QuestionString = reader.GetString(1);
+                    question.RightAnswer = reader.GetString(2);
+                    question.Level = reader.GetInt32(3);
+                    question.Category = new Category(reader.GetString(4));
+                    question.Creator = new Admin(reader.GetString(5), "passWord");
+                    question.WrongAnswer1 = reader.GetString(6);
+                    question.WrongAnswer2 = reader.GetString(7);
+                    question.WrongAnswer3 = reader.GetString(8);
+
+                }
+                return question;
+            }catch { return null; }
+            
+        }
     }
 }
