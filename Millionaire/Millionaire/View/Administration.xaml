@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Millionaire.View"
         mc:Ignorable="d"
-        Title="Administration" Height="406.716" Width="645.016">
+        Title="Administration" Height="403.41" Width="676.98">
     <Grid Background="#FF2389E2">
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-
+        <Rectangle Fill="White" Margin="58,40,70,47" Stroke="Black" StrokeThickness="0" RadiusX="3" RadiusY="3"/>
+        <Button x:Name="button" Content="Hantera frågor" HorizontalAlignment="Left" Margin="108,82,0,0" VerticalAlignment="Top" Width="190" Click="button_Click" Cursor="Hand" Background="#FF2389DE" Height="63" BorderBrush="#FF0068FF" BorderThickness="0"/>
+        <Button x:Name="button_Copy" Content="Hantera användare" HorizontalAlignment="Left" Margin="350,82,0,0" VerticalAlignment="Top" Width="190" Click="button_Click" Cursor="Hand" Background="#FF2389DE" Height="63" BorderBrush="#FF0068FF" BorderThickness="0"/>
     </Grid>
 </Window>

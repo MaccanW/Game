@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Millionaire.View;
+using System.Collections;
+
 
 namespace Millionaire.View
 {
@@ -29,14 +31,21 @@ namespace Millionaire.View
         {
             return dal.ValidateUser(username, password, sqlCommand);
         }
-        private bool CreateOrUpdateScoreboard(int entryId, User user, int points)
+        /*private bool CreateOrUpdateScoreboard(int entryId, User user, int points)
         {
            return dal.CreateOrUpdateScoreboard(entryId, user, points);
-        }
-      /*  public ScoreboardEntry GetScoreBoardEntry(int entryId)
+        }*/
+
+        public List<Question> GetAllQuestions()
         {
-            return dal.GetScoreboardEntry(entryId);
+            return dal.GetAllQuestions();
         }
+        public List<ScoreboardEntry> GetScoreboardEntry()
+        {
+            return dal.GetScoreboardEntry();
+        }
+
+            /*
         public void DeleteScoreboardEntry(int entryId)
         {
             dal.DeleteScoreboardEntry(entryId); 

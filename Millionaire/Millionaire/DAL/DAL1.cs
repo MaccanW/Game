@@ -1,14 +1,16 @@
 ﻿using Millionaire.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Millionaire.DAL
 {
-    class DAL1
+    public class DAL1
     {
 
         //DB connection
@@ -61,12 +63,12 @@ namespace Millionaire.DAL
             {
                 cmd.ExecuteNonQuery();
                 Connect().Close();
-                
+
             }
             catch
             {
                 Connect().Close();
-          
+
             }
         }
         //Create or update question
@@ -106,8 +108,6 @@ namespace Millionaire.DAL
         {
             string sql = @sqlCommand + " '" + @userName + "', '" + @password + "'";
 
-
-
             SqlCommand cmd = new SqlCommand(sql, Connect());
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -129,15 +129,19 @@ namespace Millionaire.DAL
                     }
                 }
             }
-            catch(SqlException s)
+            catch (SqlException s)
             {
                 Console.WriteLine(s);
-            } return false;
+                Connect().Close();
+            }
+            return false;
+            }
+            return false;
         }
 
 
         //Create or update scoreboard 
-        public bool CreateOrUpdateScoreboard(int entryId, User user, int points)
+        private bool CreateOrUpdateScoreboard(int entryId, User user, int points)
         {
             string sql = "execute usp_createScoreboardEntry '" + @entryId + "' ," + @user.UserName + "' " + @points;
 
@@ -160,4 +164,98 @@ namespace Millionaire.DAL
             }
 
         }
+
+        public List<ScoreboardEntry> GetScoreboardEntry()
+        {
+            string sql = "EXECUTE usp_getScoreboardEntries";
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<ScoreboardEntry> entryList = new List<ScoreboardEntry>();
+            try
+            {
+                while (reader.Read())
+                {
+                    ScoreboardEntry entry = new ScoreboardEntry();
+                    entry.Player = new Player(reader.GetValue(1).ToString(), "password");
+                    entry.Points = Int32.Parse(reader.GetValue(2).ToString());
+                    entryList.Add(entry);
+
+                }
+                Connect().Close();
+                return entryList;
+            }
+            catch
+            {
+                Connect().Close();
+                return entryList;
+            }
+        }
+    }
+}
+        }
+
+        /*public Admin getAdmin(string userName)
+        {
+            string sql = "EXECUTE usp_getUser " + @userName;
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+            cmd.Parameters.Add(new SqlParameter("userName", userName));
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                Connect().Close();
+                return u;
+            }
+            catch
+            {
+                Connect().Close();
+                return null;
+            }
+
+
+
+        }*/
+
+        public List<Question> GetAllQuestions()
+        {
+            string sql = "EXECUTE usp_getAllQuestions";
+
+            SqlCommand cmd = new SqlCommand(sql, Connect());
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            List<Question> qList = new List<Question>();
+
+
+
+            try
+            {
+                while (reader.Read())
+                {
+                    Question q = new Question();
+
+                    q.QuestionID = reader.GetInt32(0);
+                    q.QuestionString = reader.GetString(1);
+                    q.RightAnswer = reader.GetString(2);
+                    q.Level = reader.GetInt32(3);
+                    q.Category = reader.GetString(4);
+                    q.Creator = new Admin(reader.GetString(5), "passWord");
+                    q.WrongAnswer1 = reader.GetString(6);
+                    q.WrongAnswer2 = reader.GetString(7);
+                    q.WrongAnswer3 = reader.GetString(8);
+
+                    qList.Add(q);
+
+                }
+                return qList;
+            }catch
+            {
+                return null;
+            }
+
+            
+        }
+    }
 }

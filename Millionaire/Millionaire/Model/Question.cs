@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Millionaire.Model
 {
-    class Question
+   public class Question
     {
-        private String questionID;
+        private int questionID;
         private String questionString;
         private String rightAnswer;
         private String wrongAnswer1;
         private String wrongAnswer2;
         private String wrongAnswer3;
-        private List<String> wrongAnswers;
+        
         private String category;
         private int level;
         private Admin creator;
@@ -30,7 +30,7 @@ namespace Millionaire.Model
             this.creator = creator;
         }*/
 
-        public string QuestionID
+        public int QuestionID
         {
             get
             {
@@ -69,19 +69,6 @@ namespace Millionaire.Model
             }
         }
 
-        public List<string> WrongAnswers
-        {
-            get
-            {
-                return wrongAnswers;
-            }
-
-            set
-            {
-                wrongAnswers = value;
-            }
-        }
-
         public string Category
         {
             get
@@ -108,7 +95,7 @@ namespace Millionaire.Model
             }
         }
 
-        internal Admin Creator
+        public Admin Creator
         {
             get
             {

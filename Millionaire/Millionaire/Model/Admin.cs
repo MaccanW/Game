@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Millionaire.Model
 {
-    class Admin : User
+    public class Admin : User
     {
-        public Admin(String userID, String password)
+        public Admin(String userName, String password)
         {
-            this.UserName = UserName;
+            this.UserName = userName;
             this.Password = password;
             //Hejsan
        
