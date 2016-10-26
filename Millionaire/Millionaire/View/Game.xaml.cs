@@ -24,9 +24,12 @@ namespace Millionaire.View
     {
         Controller controller = new Controller();
         int counter = 0;
-        int levelCounter = 0;
-        public Game()
+        int score = 0;
+        int levelCounter = 1;
+
+        public Game(Player player)
         {
+
             InitializeComponent();
             AddCategories();
                     
@@ -113,7 +116,9 @@ namespace Millionaire.View
             string answer = sender.ToString().Remove(0, 32);
             if (answer.Equals(rightQuestion.RightAnswer))
             {
-                counter++;
+                CalculateScore();
+                if (counter > 5 || counter > 10)
+                    levelCounter++;
               HideVisible("answers");
                 AddCategories();
             }
@@ -124,9 +129,10 @@ namespace Millionaire.View
             }
             Console.WriteLine(answer);
         }
-        private int CalculateScore(int level)
-        {      
-              return counter = counter * level;
+        private int CalculateScore()
+        {
+            
+              return score = score + levelCounter;
             
         }
 
@@ -134,7 +140,7 @@ namespace Millionaire.View
         {
             HideVisible("answers");
             
-            questionLbl.Content = "You lose! Your score: " + counter; 
+            questionLbl.Content = "You lose! Your score: " + score; 
         }
         private void HideVisible(string type)
         {
