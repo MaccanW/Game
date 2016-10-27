@@ -9,7 +9,7 @@
     <Grid Background="#FF2389DE">
         <Border BorderBrush="Black" BorderThickness="0" Margin="32,20,32,27" Background="White" CornerRadius="3"/>
         <TextBox x:Name="usernameTxt" Height="27" Margin="86,91,86,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button x:Name="button" Content="Log in" Margin="108,188,109,50" Click="button_Click_1" Background="#FF2389DE" Height="Auto" BorderBrush="#FF2389DE"/>
+        <Button x:Name="loginBtn" Content="Log in" Margin="108,188,109,50" Click="loginBtn_Click" Background="#FF2389DE" Height="Auto" BorderBrush="#FF2389DE"/>
         <Label x:Name="label" Content="Logga in&#xD;&#xA;" Margin="101,26,100,0" VerticalAlignment="Top" RenderTransformOrigin="-5.259,1.014" FontSize="18" FontWeight="Bold" Height="37"/>
         <Label x:Name="label1_Copy" Content="Lösenord:" Margin="85,119,100,0" VerticalAlignment="Top" Height="29"/>
         <Label x:Name="label1" Content="Användarnamn:" HorizontalAlignment="Left" Margin="85,63,0,174"/>

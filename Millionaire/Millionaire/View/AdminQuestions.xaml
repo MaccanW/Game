@@ -14,14 +14,14 @@
                     <TextBox x:Name="playernameTxt" HorizontalAlignment="Left" Height="30" Margin="38,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"/>
                     <Button x:Name="deleteuserbtn" Content="Ta bort" HorizontalAlignment="Left" Margin="168,86,0,0" VerticalAlignment="Top" Width="81" Background="#FF2389E2" Click="deleteuserbtn_Click" Height="38" BorderBrush="#FF2389DE"/>
                     <Border BorderBrush="#FF7C7C7C" BorderThickness="2,0,0,0" HorizontalAlignment="Left" Height="554" Margin="316,38,0,0" VerticalAlignment="Top" Width="3" Opacity="0.9" Background="#FFA4A4A4"/>
-                    <Button x:Name="showPlayers" Content="Visa spelare" HorizontalAlignment="Left" Margin="143,150,0,0" VerticalAlignment="Top" Width="106" Background="#FF2389E2" Click="button1_Click" Height="37" BorderBrush="#FF2389DE"/>
+                    <Button x:Name="showPlayers" Content="Visa spelare" HorizontalAlignment="Left" Margin="143,150,0,0" VerticalAlignment="Top" Width="106" Background="#FF2389E2" Click="showPlayers_Click" Height="37" BorderBrush="#FF2389DE"/>
                     <Label x:Name="label2" Content="Ta bort spelare" HorizontalAlignment="Left" Margin="38,20,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label x:Name="label2_Copy" Content="Lägg till Admin" HorizontalAlignment="Left" Margin="370,20,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBox x:Name="adminun" HorizontalAlignment="Left" Height="30" Margin="372,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="196"/>
                     <TextBox x:Name="adminpw" HorizontalAlignment="Left" Height="30" Margin="372,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="196"/>
                     <Label x:Name="label3" Content="Användarnamn:" HorizontalAlignment="Left" Margin="372,71,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label3_Copy" Content="Lösenord:" HorizontalAlignment="Left" Margin="372,163,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="AddAdminBtn" Content="Lägg till" HorizontalAlignment="Left" Margin="621,191,0,0" VerticalAlignment="Top" Width="111" Background="#FF2389E2" Click="AddAdminBtn_Click"/>
+                    <Button x:Name="AddAdminBtn" Content="Lägg till" HorizontalAlignment="Left" Margin="621,191,0,0" VerticalAlignment="Top" Width="111" Background="#FF2389E2" Click="AddAdminBtn_Click" BorderBrush="#FF2389E2"/>
                     <Border BorderBrush="#FF7C7C7C" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Height="3" Margin="370,262,0,0" VerticalAlignment="Top" Width="533" Opacity="0.9" Background="#FFA4A4A4" RenderTransformOrigin="0.5,0.5">
                         <Border.RenderTransform>
                             <TransformGroup>
@@ -82,16 +82,17 @@
                     <Label x:Name="label_Copy2" Content="Fel svar 1:" HorizontalAlignment="Left" Margin="302,104,0,0" VerticalAlignment="Top" Width="71" FontWeight="Bold"/>
                     <ComboBox x:Name="CatComboBox" HorizontalAlignment="Left" Margin="655,135,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CatComboBox_SelectionChanged"/>
                     <Label x:Name="label1" Content="Kategori:" HorizontalAlignment="Left" Margin="646,99,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Button x:Name="button_Copy" Content="Visa aktiva" HorizontalAlignment="Left" Margin="817,242,0,0" VerticalAlignment="Top" Width="114" Click="button_Click" Cursor="Hand" Background="#FF2389DE" Height="32" BorderBrush="#FF2389DE" BorderThickness="1" FontSize="12"/>
+                    <Button x:Name="showQBtn" Content="Visa aktiva" HorizontalAlignment="Left" Margin="817,242,0,0" VerticalAlignment="Top" Width="114" Click="showQBtn_Click" Cursor="Hand" Background="#FF2389DE" Height="32" BorderBrush="#FF2389DE" BorderThickness="1" FontSize="12"/>
                     <Button x:Name="updateBtn" Content="Ändra" HorizontalAlignment="Left" Margin="578,242,0,0" VerticalAlignment="Top" Width="107" Background="#FF2389DE" Click="updateBtn_Click" FontSize="12"/>
                     <Label x:Name="lvlLbl" Content="Nivå:" HorizontalAlignment="Left" Margin="646,32,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBox x:Name="lvlTxt" HorizontalAlignment="Left" Height="31" Margin="655,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" IsReadOnlyCaretVisible="True"/>
                     <Button x:Name="createBtn" Content="Lägg till" HorizontalAlignment="Left" Margin="694,191,0,0" VerticalAlignment="Top" Width="114" Background="#FF2389DE" Click="createBtn_Click" FontSize="12" BorderBrush="#FF2389DE"/>
                     <Button x:Name="deleteBtn" Content="Ta bort" HorizontalAlignment="Left" Margin="694,242,0,0" VerticalAlignment="Top" Width="114" Background="#FF2389DE" Click="deleteBtn_Click" FontSize="12" BorderBrush="#FF2389DE"/>
-                    <Button x:Name="button" Content="Rensa fält" HorizontalAlignment="Left" Margin="578,191,0,0" VerticalAlignment="Top" Width="107" Background="#FF2389DE" Click="button_Click_1" RenderTransformOrigin="0.252,0.469" FontSize="12" BorderBrush="#FF2389DE"/>
-                    <Button x:Name="button1" Content="Visa borttagna" HorizontalAlignment="Left" Margin="817,191,0,0" VerticalAlignment="Top" Width="114" Background="#FF2389DE" FontSize="12" Click="button1_Click_1" BorderBrush="#FF2389DE"/>
+                    <Button x:Name="clearBtn" Content="Rensa fält" HorizontalAlignment="Left" Margin="578,191,0,0" VerticalAlignment="Top" Width="107" Background="#FF2389DE" Click="clearBtn_Click" RenderTransformOrigin="0.252,0.469" FontSize="12" BorderBrush="#FF2389DE"/>
+                    <Button x:Name="ShowDeletedBtn" Content="Visa borttagna" HorizontalAlignment="Left" Margin="817,191,0,0" VerticalAlignment="Top" Width="114" Background="#FF2389DE" FontSize="12" Click="ShowDeletedBtn_Click" BorderBrush="#FF2389DE"/>
                 </Grid>
             </TabItem>
         </TabControl>
+        <Button x:Name="LogoutBtn" Content="Logga ut" HorizontalAlignment="Left" Margin="883,10,0,0" VerticalAlignment="Top" Width="107" Background="White" BorderBrush="#FF2389E2" Click="LogoutBtn_Click" Foreground="#FF2389E2"/>
     </Grid>
 </Window>

@@ -14,7 +14,7 @@
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="button" Content="Highscore" Grid.Column="1" HorizontalAlignment="Left" Margin="346,241,0,0" VerticalAlignment="Top" Width="123" Background="#FF2389DE" Height="85" Click="button_Click_1" Grid.ColumnSpan="2"/>
+        <Button x:Name="HsBtn" Content="Highscore" Grid.Column="1" HorizontalAlignment="Left" Margin="346,241,0,0" VerticalAlignment="Top" Width="123" Background="#FF2389DE" Height="85" Click="HsBtn_Click" Grid.ColumnSpan="2"/>
         <Button x:Name="backBtn" Content="Försök igen!" HorizontalAlignment="Left" Margin="139,241,0,0" VerticalAlignment="Top" Width="151" Background="#FF2389DE" Click="backBtn_Click" Height="85" Grid.ColumnSpan="2"/>
         <Rectangle x:Name="backgroundRec" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="376" Margin="45,151,0,0" Stroke="Black" VerticalAlignment="Top" Width="784" Grid.ColumnSpan="3"/>
         <Image x:Name="___Millionaire_component_questionmark_png" Grid.Column="1" Margin="69.333,205,123.333,80" Source="/Millionaire;component/questionmark.png" Stretch="Fill"/>

@@ -32,7 +32,7 @@ namespace Millionaire.View
           
             
 
-        private void button_Click_1(object sender, RoutedEventArgs e)
+        private void loginBtn_Click(object sender, RoutedEventArgs e)
         {   
 
             
@@ -45,6 +45,7 @@ namespace Millionaire.View
                     AdminQuestions adminQuestionWindow = new AdminQuestions((Admin)u);
                     adminQuestionWindow.Show();
                     this.Close();
+                    
 
                 }
                 else if (u.GetType().ToString().Equals("Millionaire.Model.Player"))

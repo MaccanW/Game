@@ -32,16 +32,15 @@ namespace Millionaire.View
 
             this.highscoreGrid.ItemsSource = controller.GetScoreboardEntry();
             this.highscoreGrid.Items.Refresh();
-
-          
-
         }
+
+
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
 
