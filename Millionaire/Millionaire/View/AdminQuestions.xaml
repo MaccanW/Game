@@ -34,7 +34,7 @@
                     </Border>
                 </Grid>
             </TabItem>
-            <TabItem Header="Frågor">
+            <TabItem Header="Frågor" Height="23" VerticalAlignment="Bottom">
                 <Grid Background="White">
                     <Rectangle Fill="White" Margin="-4,10,10,0" Stroke="Black" StrokeThickness="0" RadiusX="3" RadiusY="3"/>
                     <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="297" Margin="13,299,0,0" AutoGenerateColumns="False" VerticalAlignment="Top" Width="933" FontSize="12" FontStretch="ExtraCondensed" MinColumnWidth="10" MaxColumnWidth="140" SelectionChanged="dataGrid_SelectionChanged" IsReadOnly="True">

@@ -43,7 +43,7 @@ namespace Millionaire.View
         {
             return dal.ValidateUser(username, password, sqlCommand);
         }
-        public bool CreateOrUpdateScoreboard(User user, int points)
+        public bool CreateScoreboardEntry(User user, int points)
         {
            return dal.CreateOrUpdateScoreboard(user, points);
         }

@@ -24,7 +24,7 @@ namespace Millionaire.View
         int score = 0;
         int levelCounter = 1;
         Player pl;
-        Highscore highscoreWindow = new Highscore();
+        
 
         public Game(Player player)
         {
@@ -46,10 +46,10 @@ namespace Millionaire.View
             option4Btn.Visibility = Visibility.Visible;
             List<Category> randomCategory = NewNumber();
 
-            option_1Btn.Content = randomCategory.ElementAt(1).Categoryy;
-            option2Btn.Content = randomCategory.ElementAt(2).Categoryy;
-            option3Btn.Content = randomCategory.ElementAt(3).Categoryy;
-            option4Btn.Content = randomCategory.ElementAt(4).Categoryy;
+            option_1Btn.Content = randomCategory.ElementAt(0).Categoryy;
+            option2Btn.Content = randomCategory.ElementAt(1).Categoryy;
+            option3Btn.Content = randomCategory.ElementAt(2).Categoryy;
+            option4Btn.Content = randomCategory.ElementAt(3).Categoryy;
         }
         private List<Category> NewNumber()
         {
@@ -134,9 +134,10 @@ namespace Millionaire.View
             {
                 pointsLbl.Visibility = Visibility.Collapsed;
                 EndGame();
-                Console.WriteLine(counter);
+                controller.CreateScoreboardEntry((User)pl, score);
+                
             }
-            Console.WriteLine(answer);
+            
         }
         private int CalculateScore()
         {
@@ -147,7 +148,7 @@ namespace Millionaire.View
 
         private void EndGame()
         {
-            controller.CreateOrUpdateScoreboard(pl, score);
+            
             HideVisible("answers");
             backgroundRec.Visibility = Visibility.Collapsed;
             questionBlock.Text =pl.UserName + " You lose! Your score: " + score;
@@ -193,7 +194,8 @@ namespace Millionaire.View
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-            highscoreWindow.Show();
+            Highscore highscoreWindow = new Highscore();
+            highscoreWindow.ShowDialog();
 
         }
     }
