@@ -53,9 +53,9 @@ namespace Millionaire.View
                     this.Close();
                 }
             }
-            catch
+            catch(NullReferenceException ae)
             {
-
+                Console.WriteLine("hejehjehejh" + ae);
             }
 
         }

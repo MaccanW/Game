@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Millionaire.View"
         mc:Ignorable="d"
-        Title="Highscore" Height="428.535" Width="429.066">
-    <Grid Background="#FF2389DE" Margin="0,0,0,-52">
-        <DataGrid x:Name="highscoreGrid"  HorizontalAlignment="Left" Margin="103,55,0,0" VerticalAlignment="Top" DataContext="{Binding list}" ItemsSource="{Binding Source=list}" Height="370" Width="193" AutoGenerateColumns="False" SelectionChanged="dataGrid_SelectionChanged">
+        Title="Highscore" Height="487.717" Width="429.066">
+    <Grid Background="#FF2389DE" Height="458" VerticalAlignment="Top">
+        <DataGrid x:Name="highscoreGrid"  HorizontalAlignment="Left" Margin="103,55,0,0" VerticalAlignment="Top" DataContext="{Binding list}" ItemsSource="{Binding Source=list}" Height="380" Width="193" AutoGenerateColumns="False" SelectionChanged="dataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="#"/>
                 <DataGridTextColumn Header="Player" Binding="{Binding Player.UserName}"/>

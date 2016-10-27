@@ -39,7 +39,7 @@ namespace Millionaire.View
         }
             private void AddCategories()
         {
-            questionBlock.Text= "Pick a category";
+            questionBlock.Text= "Välj kategori";
             option_1Btn.Visibility = Visibility.Visible;
             option2Btn.Visibility = Visibility.Visible;
             option3Btn.Visibility = Visibility.Visible;
@@ -122,7 +122,7 @@ namespace Millionaire.View
             {
                 counter++;
                 CalculateScore();
-                pointsLbl.Content = "Your score: " + score;
+                pointsLbl.Content = "Din poäng: " + score;
                 controller.CreateScoreboardEntry(pl, score);
                 if (counter > 5 || counter > 10)
                     levelCounter++;
@@ -151,7 +151,7 @@ namespace Millionaire.View
             
             HideVisible("answers");
             backgroundRec.Visibility = Visibility.Collapsed;
-            questionBlock.Text =pl.UserName + " You lose! Your score: " + score;
+            questionBlock.Text = "Spelet är slut! Antal poäng: " + score;
             backBtn.Visibility = Visibility.Visible;
 
         }
