@@ -170,10 +170,7 @@ namespace Millionaire.View
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            List<Player> pList = con.GetPlayers();
-            datagridUser.ClearValue(ItemsControl.ItemsSourceProperty);
-            this.datagridUser.ItemsSource = pList;
-           
+            UpdatePlayers();         
 
         }
 
@@ -195,6 +192,7 @@ namespace Millionaire.View
             try
             {
                 con.DeleteUser(playernameTxt.Text);
+                UpdatePlayers();
             }
             catch
             {
@@ -225,6 +223,13 @@ namespace Millionaire.View
             {
 
             }
+        }
+
+        private void UpdatePlayers()
+        {
+            List<Player> pList = con.GetPlayers();
+            datagridUser.ClearValue(ItemsControl.ItemsSourceProperty);
+            this.datagridUser.ItemsSource = pList;
         }
     }
 }
