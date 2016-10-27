@@ -117,9 +117,9 @@ namespace Millionaire.View
                 con.UpdateQuestion(q.QuestionID, textBox.Text, raTxt.Text, Convert.ToInt32(lvlTxt.Text), q.Category, q.Creator, wa1Txt.Text, wa2Txt.Text, wa3Txt.Text, "EXECUTE usp_updateQuestion");
                 
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Hoppsan! Något gick fel!");
+            
                       
             }
         }
