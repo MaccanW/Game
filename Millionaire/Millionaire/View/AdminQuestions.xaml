@@ -93,5 +93,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
+        <Label x:Name="errorMessageLbl" Content="" HorizontalAlignment="Left" Margin="10,688,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
