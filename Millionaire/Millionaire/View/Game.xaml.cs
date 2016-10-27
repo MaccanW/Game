@@ -39,7 +39,7 @@ namespace Millionaire.View
         }
             private void AddCategories()
         {
-            questionBlock.Text= "Pick a category";
+            questionBlock.Text= "Välj kategori";
             option_1Btn.Visibility = Visibility.Visible;
             option2Btn.Visibility = Visibility.Visible;
             option3Btn.Visibility = Visibility.Visible;
@@ -169,7 +169,7 @@ namespace Millionaire.View
             
             HideVisible("answers");
             backgroundRec.Visibility = Visibility.Collapsed;
-            questionBlock.Text =pl.UserName + " You lose! Your score: " + score;
+            questionBlock.Text = "Spelet är slut! Antal poäng: " + score;
             backBtn.Visibility = Visibility.Visible;
 
         }
@@ -205,12 +205,7 @@ namespace Millionaire.View
             newGame.ShowDialog();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void button_Click_1(object sender, RoutedEventArgs e)
+        private void HsBtn_Click(object sender, RoutedEventArgs e)
         {
             Highscore highscoreWindow = new Highscore();
             highscoreWindow.ShowDialog();

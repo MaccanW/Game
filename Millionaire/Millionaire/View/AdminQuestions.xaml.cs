@@ -37,7 +37,7 @@ namespace Millionaire.View
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void showQBtn_Click(object sender, RoutedEventArgs e)
         {
             List<Question> qList = con.GetAllQuestions();
             //dataGrid.Items.Add(qList);
@@ -163,7 +163,7 @@ namespace Millionaire.View
             }
         }
 
-        private void button_Click_1(object sender, RoutedEventArgs e)
+        private void clearBtn_Click(object sender, RoutedEventArgs e)
         {
             textBox.Text = null;
             raTxt.Text = null;
@@ -175,7 +175,7 @@ namespace Millionaire.View
             lvlTxt.Text = null;
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void showPlayers_Click(object sender, RoutedEventArgs e)
         {
             UpdatePlayers();         
 
@@ -218,7 +218,7 @@ namespace Millionaire.View
             }
         }
 
-        private void button1_Click_1(object sender, RoutedEventArgs e)
+        private void ShowDeletedBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -245,6 +245,14 @@ namespace Millionaire.View
                 errorMessageLbl.Content = "Error: " + ex.Message;
             }
 
+        }
+
+        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

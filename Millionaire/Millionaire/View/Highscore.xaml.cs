@@ -40,15 +40,13 @@ namespace Millionaire.View
             }
 
 
-          
 
-        }
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
 

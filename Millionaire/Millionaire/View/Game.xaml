@@ -14,8 +14,8 @@
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="button" Content="Highschore" Grid.Column="1" HorizontalAlignment="Left" Margin="346,241,0,0" VerticalAlignment="Top" Width="123" Background="#FF2389DE" Height="85" Click="button_Click_1" Grid.ColumnSpan="2"/>
-        <Button x:Name="backBtn" Content="Try again!" HorizontalAlignment="Left" Margin="139,241,0,0" VerticalAlignment="Top" Width="151" Background="#FF2389DE" Click="backBtn_Click" Height="85" Grid.ColumnSpan="2"/>
+        <Button x:Name="HsBtn" Content="Highscore" Grid.Column="1" HorizontalAlignment="Left" Margin="346,241,0,0" VerticalAlignment="Top" Width="123" Background="#FF2389DE" Height="85" Click="HsBtn_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="backBtn" Content="Försök igen!" HorizontalAlignment="Left" Margin="139,241,0,0" VerticalAlignment="Top" Width="151" Background="#FF2389DE" Click="backBtn_Click" Height="85" Grid.ColumnSpan="2"/>
         <Rectangle x:Name="backgroundRec" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="376" Margin="45,151,0,0" Stroke="Black" VerticalAlignment="Top" Width="784" Grid.ColumnSpan="3"/>
         <Image x:Name="___Millionaire_component_questionmark_png" Grid.Column="1" Margin="69.333,205,123.333,80" Source="/Millionaire;component/questionmark.png" Stretch="Fill"/>
 
@@ -27,7 +27,7 @@
         <Button x:Name="answer2Btn" Content="Button" HorizontalAlignment="Left" Margin="297.333,178,0,0" VerticalAlignment="Top" Width="248" Height="148" Background="#FF2389DE" Grid.ColumnSpan="2" Click="answer1Btn_Click" Grid.Column="1" Visibility="Collapsed"/>
         <Button x:Name="answer3Btn" Content="Button" HorizontalAlignment="Left" Margin="93,361,0,0" VerticalAlignment="Top" Width="248" Height="148" Background="#FF2389DE" Click="answer1Btn_Click" Grid.ColumnSpan="2" Visibility="Collapsed"/>
         <Button x:Name="answer4Btn" Content="Button" HorizontalAlignment="Left" Height="148" Margin="297.333,361,0,0" VerticalAlignment="Top" Width="248" Background="#FF2389DE" Grid.ColumnSpan="2" Click="answer1Btn_Click" Grid.Column="1" Visibility="Collapsed"/>
-        <Label x:Name="pointsLbl" Content="Your points: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontSize="16"/>
+        <Label x:Name="pointsLbl" Content="Dina poäng:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontSize="16"/>
         <TextBlock x:Name="questionBlock" HorizontalAlignment="Center" Margin="45,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="75" Width="784" Foreground="White" FontSize="24"/>
         <Label x:Name="errorMessageLbl" Content="" HorizontalAlignment="Left" Margin="10,536,0,0" VerticalAlignment="Top"/>
 
