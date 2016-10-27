@@ -29,6 +29,7 @@
         <Button x:Name="answer4Btn" Content="Button" HorizontalAlignment="Left" Height="148" Margin="297.333,361,0,0" VerticalAlignment="Top" Width="248" Background="#FF2389DE" Grid.ColumnSpan="2" Click="answer1Btn_Click" Grid.Column="1" Visibility="Collapsed"/>
         <Label x:Name="pointsLbl" Content="Your points: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontSize="16"/>
         <TextBlock x:Name="questionBlock" HorizontalAlignment="Center" Margin="45,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="75" Width="784" Foreground="White" FontSize="24"/>
+        <Label x:Name="errorMessageLbl" Content="" HorizontalAlignment="Left" Margin="10,536,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

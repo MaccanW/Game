@@ -35,8 +35,6 @@ namespace Millionaire.DAL
             cmd.Parameters.Add(new SqlParameter("sqlcommand", sqlcommand));
             cmd.Parameters.Add(new SqlParameter("userName", userName));
             cmd.Parameters.Add(new SqlParameter("password", password));
-            
-
             try
             {
                 cmd.ExecuteNonQuery();
