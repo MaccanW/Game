@@ -93,6 +93,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="LogoutBtn" Content="Logga ut" HorizontalAlignment="Left" Margin="883,10,0,0" VerticalAlignment="Top" Width="107" Background="White" BorderBrush="#FF2389E2" Click="LogoutBtn_Click" Foreground="#FF2389E2"/>
+        <Label x:Name="errorMessageLbl" Content="" HorizontalAlignment="Left" Margin="10,688,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

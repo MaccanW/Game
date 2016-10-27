@@ -32,6 +32,7 @@ namespace Millionaire.View
         }
         private void registerBtn_Click(object sender, RoutedEventArgs e)
         {
+            
              if (controller.CreateOrUpdateUser(userNameTxt.Text, passwordBox.Password, "EXECUTE usp_CreatePlayer"))
             {
                 try {
@@ -41,8 +42,6 @@ namespace Millionaire.View
                     Console.WriteLine(s.ToString());
                 }
             }
-
            }
-
     }
 }

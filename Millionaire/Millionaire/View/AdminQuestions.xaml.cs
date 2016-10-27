@@ -117,9 +117,9 @@ namespace Millionaire.View
                 con.UpdateQuestion(q.QuestionID, textBox.Text, raTxt.Text, Convert.ToInt32(lvlTxt.Text), q.Category, q.Creator, wa1Txt.Text, wa2Txt.Text, wa3Txt.Text, "EXECUTE usp_updateQuestion");
                 
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Hoppsan! Något gick fel!");
+            
                       
             }
         }
@@ -170,10 +170,7 @@ namespace Millionaire.View
 
         private void showPlayers_Click(object sender, RoutedEventArgs e)
         {
-            List<Player> pList = con.GetPlayers();
-            datagridUser.ClearValue(ItemsControl.ItemsSourceProperty);
-            this.datagridUser.ItemsSource = pList;
-           
+            UpdatePlayers();         
 
         }
 
@@ -195,6 +192,7 @@ namespace Millionaire.View
             try
             {
                 con.DeleteUser(playernameTxt.Text);
+                UpdatePlayers();
             }
             catch
             {
@@ -209,7 +207,7 @@ namespace Millionaire.View
                 con.CreateOrUpdateUser(adminun.Text, adminpw.Text, "EXECUTE usp_CreateAdmin");
             }catch
             {
-
+                errorMessageLbl.Content = "asdasd";
             }
         }
 
@@ -225,6 +223,13 @@ namespace Millionaire.View
             {
 
             }
+        }
+
+        private void UpdatePlayers()
+        {
+            List<Player> pList = con.GetPlayers();
+            datagridUser.ClearValue(ItemsControl.ItemsSourceProperty);
+            this.datagridUser.ItemsSource = pList;
         }
 
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
