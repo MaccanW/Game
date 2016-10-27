@@ -57,6 +57,8 @@ namespace Millionaire.View
             catch (IndexOutOfRangeException)
             {
                 //Skriv något om att det är fel användarnamn/lösenord
+
+                Console.WriteLine("Wrong username/password");
             }
             catch (Exception exception)
             {
