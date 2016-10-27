@@ -26,16 +26,16 @@ namespace Millionaire.DAL
         }
 
         //Create and update user
-        public bool CreateOrUpdateUser(string userName, string password, string userType, string sqlcommand)
+        public bool CreateOrUpdateUser(string userName, string password, string sqlcommand)
         {
-            string sql = @sqlcommand + " '" + @userName + "', '" + @password + "', '" + @userType + "'";
+            string sql = @sqlcommand + " '" + @userName + "', '" + @password + "'";
 
             SqlCommand cmd = new SqlCommand(sql, Connect());
 
             cmd.Parameters.Add(new SqlParameter("sqlcommand", sqlcommand));
             cmd.Parameters.Add(new SqlParameter("userName", userName));
             cmd.Parameters.Add(new SqlParameter("password", password));
-            cmd.Parameters.Add(new SqlParameter("userType", userType));
+            
 
             try
             {
