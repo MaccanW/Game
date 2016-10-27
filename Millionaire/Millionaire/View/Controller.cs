@@ -19,9 +19,9 @@ namespace Millionaire.View
         public Player GetPlayer(string username) {
             return dal.GetPlayer(username);
         }
-        public bool CreateOrUpdateUser(string userName, string password, string userType, string sqlcommand)
+        public bool CreateOrUpdateUser(string userName, string password, string sqlcommand)
         {
-            return dal.CreateOrUpdateUser(userName, password, userType, sqlcommand);
+            return dal.CreateOrUpdateUser(userName, password, sqlcommand);
         }
         public void DeleteUser(string userName)
         {

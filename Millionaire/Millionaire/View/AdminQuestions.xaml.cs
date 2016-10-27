@@ -206,7 +206,7 @@ namespace Millionaire.View
         {
             try
             {
-                con.CreateOrUpdateUser(adminun.Text, adminpw.Text, "Admin", "EXECUTE usp_CreateUser");
+                con.CreateOrUpdateUser(adminun.Text, adminpw.Text, "EXECUTE usp_CreateAdmin");
             }catch
             {
 
