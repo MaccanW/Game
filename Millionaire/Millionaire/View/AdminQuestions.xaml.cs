@@ -207,7 +207,7 @@ namespace Millionaire.View
                 con.CreateOrUpdateUser(adminun.Text, adminpw.Text, "EXECUTE usp_CreateAdmin");
             }catch
             {
-
+                errorMessageLbl.Content = "asdasd";
             }
         }
 
