@@ -119,7 +119,7 @@ namespace Millionaire.View
             }
             catch
             {
-                throw;
+
             }
 
         }

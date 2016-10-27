@@ -73,7 +73,7 @@ namespace Millionaire.View
             try
             {
                 string categoryName = sender.ToString().Remove(0, 32);
-                Question q = controller.GetQuestion(categoryName, 3);
+                Question q = controller.GetQuestion(categoryName, levelCounter);
                 rightQuestion = q;
                 AddQuestions(q);
                 HideVisible("options");
@@ -126,8 +126,7 @@ namespace Millionaire.View
 
         private void answer1Btn_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+           
                 pointsLbl.Content = score.ToString();
                 string answer = sender.ToString().Remove(0, 32);
                 if (answer.Equals(rightQuestion.RightAnswer))
@@ -149,11 +148,8 @@ namespace Millionaire.View
                     controller.CreateScoreboardEntry((User)pl, score);
 
                 }
-            }
-            catch (Exception ex)
-            {
-                errorMessageLbl.Content = "Error: " + ex.Message;
-            }
+            
+ 
             
             
         }
@@ -210,6 +206,13 @@ namespace Millionaire.View
             Highscore highscoreWindow = new Highscore();
             highscoreWindow.ShowDialog();
 
+        }
+
+        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

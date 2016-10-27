@@ -38,6 +38,7 @@ namespace Millionaire.View
             {
                 errorMessageLbl.Content = "Error: " + ex.Message;
             }
+        }
 
 
 

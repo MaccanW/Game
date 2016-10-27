@@ -16,7 +16,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="highscoreLbl" Content="Highscore" HorizontalAlignment="Left" Margin="133,10,0,0" VerticalAlignment="Top" FontSize="26.667" Foreground="#DDFFFFFF"/>
-        <Button x:Name="button" Content="Back" HorizontalAlignment="Left" Margin="322,222,0,0" VerticalAlignment="Top" Width="75" Background="#FF2389DE" BorderBrush="#FF341F59" Foreground="#DDFFFFFF" Click="button_Click"/>
+        <Button x:Name="BackBtn" Content="Back" HorizontalAlignment="Left" Margin="322,222,0,0" VerticalAlignment="Top" Width="75" Background="#FF2389DE" BorderBrush="#FF341F59" Foreground="#DDFFFFFF" Click="BackBtn_Click"/>
         <Label x:Name="errorMessageLbl" Content="" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
