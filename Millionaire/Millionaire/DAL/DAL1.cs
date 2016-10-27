@@ -173,10 +173,10 @@ namespace Millionaire.DAL
                     }
                 }
             }
-            catch (SqlException s)
-            {
-                Console.WriteLine(s);
+            catch (Exception)
+            {                
                 Connect().Close();
+                throw;
             }
             return null;
 

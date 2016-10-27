@@ -35,9 +35,10 @@ namespace Millionaire.View
         private void button_Click_1(object sender, RoutedEventArgs e)
         {   
 
-            User u = controller.ValidateUser(usernameTxt.Text, passwordBox.Password, "EXECUTE [usp_CheckLogin]");
+            
             try
             {
+                User u = controller.ValidateUser(usernameTxt.Text, passwordBox.Password, "EXECUTE [usp_CheckLogin]");
                 if (u.GetType().ToString().Equals("Millionaire.Model.Admin"))
                 {
 
@@ -53,9 +54,14 @@ namespace Millionaire.View
                     this.Close();
                 }
             }
-            catch
+            catch (IndexOutOfRangeException)
             {
-
+                //Skriv något om att det är fel användarnamn/lösenord
+            }
+            catch (Exception exception)
+            {
+                
+                Console.WriteLine(exception.Message);
             }
 
         }

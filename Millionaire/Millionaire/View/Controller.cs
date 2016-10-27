@@ -37,11 +37,31 @@ namespace Millionaire.View
             return dal.UpdateQuestion(id, question, rightAnswer, level, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
         }
 
+        public class UserNotFoundException : Exception
+        {
+            public UserNotFoundException()
+            {
 
+            }
+            public UserNotFoundException(string message)
+            : base(message)
+            {
+
+            }
+            
+        } 
 
         public User ValidateUser(string username, string password, string sqlCommand)
         {
-            return dal.ValidateUser(username, password, sqlCommand);
+            try
+            {
+                return dal.ValidateUser(username, password, sqlCommand);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
         public bool CreateScoreboardEntry(User user, int points)
         {
