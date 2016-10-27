@@ -37,9 +37,9 @@ namespace Millionaire.View
             {
                 try {
                     this.Hide();
-                } catch(Exception s)
+                } catch(Exception ex)
                 {
-                    Console.WriteLine(s.ToString());
+                    errorMessageLbl.Content = "Error: " + ex.Message;
                 }
             }
            }

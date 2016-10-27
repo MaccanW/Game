@@ -69,7 +69,7 @@ namespace Millionaire.View
         {
             try
             {
-
+                
                 Question q = (Question)dataGrid.SelectedItem;
                 textBox.Text = q.QuestionString;
                 raTxt.Text = q.RightAnswer;
@@ -95,9 +95,9 @@ namespace Millionaire.View
                     lvlTxt.Text = lq.Level.ToString();
                     CatComboBox.Text = lq.Category.Categoryy;
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    errorMessageLbl.Content = "Error: " + ex.Message;
                 }
 
             }
@@ -119,7 +119,7 @@ namespace Millionaire.View
             }
             catch (Exception ex)
             {
-            
+                errorMessageLbl.Content = "Error: " + ex.Message;
                       
             }
         }
@@ -132,28 +132,35 @@ namespace Millionaire.View
             {
                 con.CreateQuestion(textBox.Text, raTxt.Text, Convert.ToInt32(lvlTxt.Text), c, ad, wa1Txt.Text, wa2Txt.Text, wa3Txt.Text, "EXECUTE usp_createQuestion ");
             }
-            catch{
-                
+            catch(Exception ex){
+                errorMessageLbl.Content = "Error: " + ex.Message;
             }
         }
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            Question q = (Question)dataGrid.SelectedItem;
-            con.DeleteQuestion(q.QuestionID);
-            List<Question> qList = con.GetAllQuestions();
-            //dataGrid.Items.Add(qList);
-            dataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
-            //dataGrid.Items.Clear();
-            this.dataGrid.ItemsSource = qList;
-            textBox.Text = null;
-            raTxt.Text = null;
-            wa1Txt.Text = null;
-            wa2Txt.Text = null;
-            wa3Txt.Text = null;
-            //qIdTxt.Text = null;
-            CatComboBox.Text = null;
-            lvlTxt.Text = null;
+            try
+            {
+                Question q = (Question)dataGrid.SelectedItem;
+                con.DeleteQuestion(q.QuestionID);
+                List<Question> qList = con.GetAllQuestions();
+                //dataGrid.Items.Add(qList);
+                dataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
+                //dataGrid.Items.Clear();
+                this.dataGrid.ItemsSource = qList;
+                textBox.Text = null;
+                raTxt.Text = null;
+                wa1Txt.Text = null;
+                wa2Txt.Text = null;
+                wa3Txt.Text = null;
+                //qIdTxt.Text = null;
+                CatComboBox.Text = null;
+                lvlTxt.Text = null;
+            }
+            catch (Exception ex)
+            {
+                errorMessageLbl.Content = "Error: " + ex.Message;
+            }
         }
 
         private void button_Click_1(object sender, RoutedEventArgs e)
@@ -181,9 +188,9 @@ namespace Millionaire.View
                 Player p = (Player)datagridUser.SelectedItem;
                 playernameTxt.Text = p.UserName;
             }
-            catch
+            catch (Exception ex)
             {
-
+                errorMessageLbl.Content = "Error: " + ex.Message;
             }
         }
 
@@ -194,9 +201,9 @@ namespace Millionaire.View
                 con.DeleteUser(playernameTxt.Text);
                 UpdatePlayers();
             }
-            catch
+            catch (Exception ex)
             {
-
+                errorMessageLbl.Content = "Error: " + ex.Message;
             }
         }
 
@@ -205,9 +212,9 @@ namespace Millionaire.View
             try
             {
                 con.CreateOrUpdateUser(adminun.Text, adminpw.Text, "EXECUTE usp_CreateAdmin");
-            }catch
+            }catch (Exception ex)
             {
-                errorMessageLbl.Content = "asdasd";
+                errorMessageLbl.Content = "Error: " + ex.Message;
             }
         }
 
@@ -219,17 +226,25 @@ namespace Millionaire.View
                 dataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
                 this.dataGrid.ItemsSource = lqList;
             }
-            catch
+            catch (Exception ex)
             {
-
+                errorMessageLbl.Content = "Error: " + ex.Message;
             }
         }
 
         private void UpdatePlayers()
         {
-            List<Player> pList = con.GetPlayers();
-            datagridUser.ClearValue(ItemsControl.ItemsSourceProperty);
-            this.datagridUser.ItemsSource = pList;
+            try
+            {
+                List<Player> pList = con.GetPlayers();
+                datagridUser.ClearValue(ItemsControl.ItemsSourceProperty);
+                this.datagridUser.ItemsSource = pList;
+            }
+            catch(Exception ex)
+            {
+                errorMessageLbl.Content = "Error: " + ex.Message;
+            }
+
         }
     }
 }

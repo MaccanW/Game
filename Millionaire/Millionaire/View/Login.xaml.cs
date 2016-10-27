@@ -58,12 +58,12 @@ namespace Millionaire.View
             {
                 //Skriv något om att det är fel användarnamn/lösenord
 
-                Console.WriteLine("Wrong username/password");
+                errorMessageLbl.Content = "Error: Wrong username/password";
             }
             catch (Exception exception)
             {
-                
-                Console.WriteLine(exception.Message);
+
+                errorMessageLbl.Content = "Error: Wrong username/password" + exception.Message;
             }
 
         }

@@ -65,15 +65,25 @@ namespace Millionaire.View
             }
             return randomCategory;
         }
+
         Question rightQuestion = new Question();
+
         private void option_1Btn_Click(object sender, RoutedEventArgs e)
         {
-            string categoryName =  sender.ToString().Remove(0,32) ;
-            Question q = controller.GetQuestion(categoryName, 3);
-            rightQuestion = q;
-            AddQuestions(q);
-            HideVisible("options");
-            pointsLbl.Visibility = Visibility.Visible;
+            try
+            {
+                string categoryName = sender.ToString().Remove(0, 32);
+                Question q = controller.GetQuestion(categoryName, 3);
+                rightQuestion = q;
+                AddQuestions(q);
+                HideVisible("options");
+                pointsLbl.Visibility = Visibility.Visible;
+            }
+            catch (Exception ex)
+            {
+                errorMessageLbl.Content = "Error: " + ex.Message;
+            }
+
         }
        
 
@@ -92,6 +102,7 @@ namespace Millionaire.View
             answer4Btn.Content = randomAnswer.ElementAt(3);
             
         }
+
         private List<string> RandomAnswer(Question q)
         {
             List<string> questionAnswers = new List<string>();
@@ -113,30 +124,37 @@ namespace Millionaire.View
             return randomAnswer;
         }
 
-
         private void answer1Btn_Click(object sender, RoutedEventArgs e)
         {
-            pointsLbl.Content = score.ToString();
-            string answer = sender.ToString().Remove(0, 32);
-            if (answer.Equals(rightQuestion.RightAnswer))
+            try
             {
-                counter++;
-                CalculateScore();
-                pointsLbl.Content = "Your score: " + score;
-                controller.CreateScoreboardEntry(pl, score);
-                if (counter > 5 || counter > 10)
-                    levelCounter++;
-              HideVisible("answers");
-                AddCategories();
-                
+                pointsLbl.Content = score.ToString();
+                string answer = sender.ToString().Remove(0, 32);
+                if (answer.Equals(rightQuestion.RightAnswer))
+                {
+                    counter++;
+                    CalculateScore();
+                    pointsLbl.Content = "Your score: " + score;
+                    controller.CreateScoreboardEntry(pl, score);
+                    if (counter > 5 || counter > 10)
+                        levelCounter++;
+                    HideVisible("answers");
+                    AddCategories();
+
+                }
+                else
+                {
+                    pointsLbl.Visibility = Visibility.Collapsed;
+                    EndGame();
+                    controller.CreateScoreboardEntry((User)pl, score);
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                pointsLbl.Visibility = Visibility.Collapsed;
-                EndGame();
-                controller.CreateScoreboardEntry((User)pl, score);
-                
+                errorMessageLbl.Content = "Error: " + ex.Message;
             }
+            
             
         }
         private int CalculateScore()

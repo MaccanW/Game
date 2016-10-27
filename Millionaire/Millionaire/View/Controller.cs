@@ -21,21 +21,51 @@ namespace Millionaire.View
         }
         public bool CreateOrUpdateUser(string userName, string password, string sqlcommand)
         {
-            return dal.CreateOrUpdateUser(userName, password, sqlcommand);
+            try
+            {
+                return dal.CreateOrUpdateUser(userName, password, sqlcommand);
+            }
+            catch
+            {
+                throw;
+            }
+
         }
         public void DeleteUser(string userName)
         {
-            dal.DeleteUser(userName);
+            try
+            {
+                dal.DeleteUser(userName);
+            }
+            catch
+            {
+                throw;
+            }
         }
         public bool CreateQuestion(string question, string rightAnswer, int level, Category category, Admin creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
         {
-           return dal.CreateQuestion(question, rightAnswer, level, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
+            try
+            {
+                return dal.CreateQuestion(question, rightAnswer, level, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
+
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public bool UpdateQuestion(int id, string question, string rightAnswer, int level, Category category, Admin creator, string wrongAnswer1, string wrongAnswer2, string wrongAnswer3, string sqlCommand)
         {
-            return dal.UpdateQuestion(id, question, rightAnswer, level, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
-        }
+            try
+            {
+                return dal.UpdateQuestion(id, question, rightAnswer, level, category, creator, wrongAnswer1, wrongAnswer2, wrongAnswer3, sqlCommand);
+            }
+            catch
+            {
+                throw;
+            }
+       }
 
 
         public User ValidateUser(string username, string password, string sqlCommand)
@@ -57,41 +87,104 @@ namespace Millionaire.View
 
         public List<Question> GetAllQuestions()
         {
-            return dal.GetAllQuestions();
+            try
+            {
+                return dal.GetAllQuestions();
+            }
+            catch
+            {
+                throw;
+            }
+
         }
 
         public List<LegacyQuestion> GetAllLegacyQuestions()
         {
-            return dal.GetAllLegacyQuestions();
+            try
+            {
+                return dal.GetAllLegacyQuestions();
+            }
+            catch
+            {
+                throw;
+            }
+
         }
 
         public void CreateScoreboardEntry(Player player, int points)
         {
-            dal.CreateScoreboardEntry(player, points);
+            try
+            {
+                dal.CreateScoreboardEntry(player, points);
+            }
+            catch
+            {
+                throw;
+            }
+
         }
 
         public Question GetQuestion(string category, int level)
         {
-            return dal.GetQuestion(category, level);
+            try
+            {
+                return dal.GetQuestion(category, level);
+            }
+
+            catch
+            {
+                throw;
+            }
+
         }
         public List<ScoreboardEntry> GetScoreboardEntry()
         {
-            return dal.GetScoreboardEntry();
+            try
+            {
+                return dal.GetScoreboardEntry();
+            }
+            catch
+            {
+                throw;
+            }
+
         }
 
         public List<Category> GetCategories()
         {
-            return dal.GetCategories();
+            try
+            {
+                return dal.GetCategories();
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public void DeleteQuestion(int questionID)
         {
-            dal.DeleteQuestion(questionID);
+            try
+            {
+                dal.DeleteQuestion(questionID);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public List<Player> GetPlayers()
         {
-            return dal.GetPlayers();
+            try
+            {
+                return dal.GetPlayers();
+            }
+            catch
+            {
+                throw;
+            }
+
         }
     }
 }

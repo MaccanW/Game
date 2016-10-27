@@ -44,7 +44,7 @@ namespace Millionaire.DAL
             catch
             {
                 Connect().Close();
-                return false;
+                throw;
             }
         }
 
@@ -99,8 +99,9 @@ namespace Millionaire.DAL
             }
             catch
             {
+                
                 Connect().Close();
-                return false;
+                throw;
             }
 
         }
@@ -132,8 +133,9 @@ namespace Millionaire.DAL
             }
             catch
             {
+                
                 Connect().Close();
-                return false;
+                throw;
             }
 
         }
@@ -226,7 +228,7 @@ namespace Millionaire.DAL
             catch
             {
                 Connect().Close();
-                return entryList;
+                throw;
             }
         }
     
@@ -246,6 +248,7 @@ namespace Millionaire.DAL
             catch
             {
                 Connect().Close();
+                throw;
 
             }
         }
@@ -283,7 +286,7 @@ namespace Millionaire.DAL
             }
             catch
             {
-                return null;
+                throw;
             }
         }
 
@@ -304,7 +307,7 @@ namespace Millionaire.DAL
             }
             catch
             {
-                return null;
+                throw;
             }
         }
 
@@ -322,6 +325,7 @@ namespace Millionaire.DAL
             catch
             {
                 Connect().Close();
+                throw;
 
             }
 
@@ -345,7 +349,7 @@ namespace Millionaire.DAL
             }
             catch
             {
-                return null;
+                throw;
             }
         }
 
@@ -384,39 +388,48 @@ namespace Millionaire.DAL
 
         public List<LegacyQuestion> GetAllLegacyQuestions()
         {
-            string sql = "EXECUTE usp_GetAllLegacyQuestions";
-
-            SqlCommand cmd = new SqlCommand(sql, Connect());
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            List<LegacyQuestion> qList = new List<LegacyQuestion>();
             try
             {
-                while (reader.Read())
+                string sql = "EXECUTE usp_GetAllLegacyQuestions";
+
+                SqlCommand cmd = new SqlCommand(sql, Connect());
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<LegacyQuestion> qList = new List<LegacyQuestion>();
+                try
                 {
-                    LegacyQuestion q = new LegacyQuestion();
+                    while (reader.Read())
+                    {
+                        LegacyQuestion q = new LegacyQuestion();
 
-                    q.QuestionID = reader.GetInt32(0);
-                    q.Date = reader.GetSqlDateTime(1).ToString();
-                    q.QuestionString = reader.GetString(2);
-                    q.RightAnswer = reader.GetString(3);
-                    q.Level = reader.GetInt32(4);
-                    q.Category = new Category(reader.GetString(5));
-                    q.Creator = new Admin(reader.GetString(6), "passWord");
-                    q.WrongAnswer1 = reader.GetString(7);
-                    q.WrongAnswer2 = reader.GetString(8);
-                    q.WrongAnswer3 = reader.GetString(9);
+                        q.QuestionID = reader.GetInt32(0);
+                        q.Date = reader.GetSqlDateTime(1).ToString();
+                        q.QuestionString = reader.GetString(2);
+                        q.RightAnswer = reader.GetString(3);
+                        q.Level = reader.GetInt32(4);
+                        q.Category = new Category(reader.GetString(5));
+                        q.Creator = new Admin(reader.GetString(6), "passWord");
+                        q.WrongAnswer1 = reader.GetString(7);
+                        q.WrongAnswer2 = reader.GetString(8);
+                        q.WrongAnswer3 = reader.GetString(9);
 
-                    qList.Add(q);
+                        qList.Add(q);
 
+                    }
+                    return qList;
                 }
-                return qList;
+                catch
+                {
+                    return null;
+                }
+
             }
             catch
             {
-                return null;
+                throw;
             }
+
         }
         public Player GetPlayer(string userName)
         {

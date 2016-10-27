@@ -29,9 +29,16 @@ namespace Millionaire.View
 
             InitializeComponent();
 
+            try
+            {
+                this.highscoreGrid.ItemsSource = controller.GetScoreboardEntry();
+                this.highscoreGrid.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                errorMessageLbl.Content = "Error: " + ex.Message;
+            }
 
-            this.highscoreGrid.ItemsSource = controller.GetScoreboardEntry();
-            this.highscoreGrid.Items.Refresh();
 
           
 
